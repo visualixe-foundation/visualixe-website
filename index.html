@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Visualixe | Think. Create. Innovate.</title>
-  <meta name="description" content="Visualixe Foundation builds practical digital solutions that simplify daily life, education, productivity, and collaboration.">
+  <meta name="description" content="Visualixe Foundation builds practical apps and websites for education, productivity, and daily life in Tanzania and beyond.">
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="visualixe.png">
@@ -33,7 +33,56 @@
     @media (hover: hover) and (min-width: 768px) {
       .card-hover:hover { transform: translateY(-6px) scale(1.02); }
     }
-    .project-thumb { aspect-ratio: 16 / 10; object-fit: cover; object-position: top center; }
+    .project-thumb-wrap {
+      position: relative;
+      aspect-ratio: 16 / 10;
+      background: #18181b;
+      overflow: hidden;
+    }
+    .project-skeleton {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, #27272a 0%, #3f3f46 50%, #27272a 100%);
+      background-size: 200% 100%;
+      animation: skeleton-shimmer 1.4s ease-in-out infinite;
+    }
+    @keyframes skeleton-shimmer {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+    .project-thumb {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+    .project-thumb.is-loaded {
+      opacity: 1;
+    }
+    .project-thumb.is-loaded + .project-skeleton,
+    .project-thumb-wrap.loaded .project-skeleton {
+      display: none;
+    }
+    /* Accessible focus rings */
+    a:focus-visible,
+    button:focus-visible {
+      outline: 2px solid #22d3ee;
+      outline-offset: 3px;
+    }
+    .open-contact-modal:focus-visible,
+    a.bg-cyan-500:focus-visible,
+    button.bg-cyan-500:focus-visible {
+      outline-offset: 4px;
+    }
+    /* Stronger category label contrast */
+    .project-cat {
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
   </style>
 </head>
 <body class="bg-zinc-950 text-white font-sans">
@@ -48,10 +97,10 @@
 
       <!-- Desktop Menu -->
       <div class="hidden md:flex gap-8 text-lg">
-        <a href="#services" class="hover:text-cyan-400 transition">Services</a>
-        <a href="#published" class="hover:text-cyan-400 transition">Published</a>
-        <a href="#about" class="hover:text-cyan-400 transition">About</a>
-        <a href="#contact" class="hover:text-cyan-400 transition">Contact</a>
+        <a href="#services" class="hover:text-cyan-400 transition rounded-sm">Services</a>
+        <a href="#published" class="hover:text-cyan-400 transition rounded-sm">Published</a>
+        <a href="#about" class="hover:text-cyan-400 transition rounded-sm">About</a>
+        <a href="#contact" class="hover:text-cyan-400 transition rounded-sm">Contact</a>
       </div>
 
       <button type="button" class="open-contact-modal hidden md:block bg-cyan-500 hover:bg-cyan-600 px-6 py-2.5 rounded-full font-medium transition">Start a Project</button>
@@ -65,10 +114,10 @@
     <!-- Mobile Menu -->
     <div id="mobileMenu" class="hidden md:hidden bg-zinc-950 border-t border-zinc-800 py-6">
       <div class="flex flex-col gap-6 px-6 text-lg">
-        <a href="#services" class="mobile-nav-link hover:text-cyan-400">Services</a>
-        <a href="#published" class="mobile-nav-link hover:text-cyan-400">Published</a>
-        <a href="#about" class="mobile-nav-link hover:text-cyan-400">About</a>
-        <a href="#contact" class="mobile-nav-link hover:text-cyan-400">Contact</a>
+        <a href="#services" class="mobile-nav-link hover:text-cyan-400 rounded-sm">Services</a>
+        <a href="#published" class="mobile-nav-link hover:text-cyan-400 rounded-sm">Published</a>
+        <a href="#about" class="mobile-nav-link hover:text-cyan-400 rounded-sm">About</a>
+        <a href="#contact" class="mobile-nav-link hover:text-cyan-400 rounded-sm">Contact</a>
         <button type="button" class="open-contact-modal mobile-nav-link bg-cyan-500 hover:bg-cyan-600 px-6 py-3 rounded-full font-medium text-center mt-4">Start a Project</button>
       </div>
     </div>
@@ -157,11 +206,14 @@
       <p class="text-center text-zinc-400 mb-10 sm:mb-12 md:mb-16 max-w-2xl mx-auto px-2">Live projects already making an impact.</p>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6 md:gap-8 max-w-5xl mx-auto">
         <div class="bg-zinc-800 rounded-3xl overflow-hidden card-hover flex flex-col">
-          <a href="https://kijanipulse-foundation.vercel.app/" target="_blank" rel="noopener noreferrer" class="block overflow-hidden border-b border-zinc-700/50">
-            <img src="https://image.thum.io/get/width/800/crop/500/noanimate/https://kijanipulse-foundation.vercel.app/" alt="KijaniPulse preview" class="project-thumb w-full bg-zinc-900" loading="lazy" width="800" height="500">
+          <a href="https://kijanipulse-foundation.vercel.app/" target="_blank" rel="noopener noreferrer" class="block overflow-hidden border-b border-zinc-700/50 focus-visible:outline-none">
+            <div class="project-thumb-wrap">
+              <div class="project-skeleton" aria-hidden="true"></div>
+              <img src="https://image.thum.io/get/width/800/crop/500/noanimate/https://kijanipulse-foundation.vercel.app/" alt="KijaniPulse preview" class="project-thumb" loading="lazy" width="800" height="500">
+            </div>
           </a>
           <div class="p-5 sm:p-6 md:p-8 flex flex-col flex-1">
-            <div class="text-emerald-400 mb-2 text-xs sm:text-sm font-medium">ENVIRONMENTAL MOVEMENT</div>
+            <div class="project-cat text-emerald-300 mb-2 text-xs sm:text-sm">ENVIRONMENTAL MOVEMENT</div>
             <h3 class="text-xl sm:text-2xl font-semibold mb-2 sm:mb-3">KijaniPulse</h3>
             <p class="text-zinc-400 mb-5 sm:mb-6 text-sm sm:text-base flex-1">Student-led environmental movement at St. Joseph Boys Science High School, Kilimanjaro.</p>
             <a href="https://kijanipulse-foundation.vercel.app/" target="_blank" rel="noopener noreferrer"
@@ -171,11 +223,14 @@
           </div>
         </div>
         <div class="bg-zinc-800 rounded-3xl overflow-hidden card-hover flex flex-col">
-          <a href="https://playlist-manifest.vercel.app/" target="_blank" rel="noopener noreferrer" class="block overflow-hidden border-b border-zinc-700/50">
-            <img src="https://image.thum.io/get/width/800/crop/500/noanimate/https://playlist-manifest.vercel.app/" alt="Playlist Manifest preview" class="project-thumb w-full bg-zinc-900" loading="lazy" width="800" height="500">
+          <a href="https://playlist-manifest.vercel.app/" target="_blank" rel="noopener noreferrer" class="block overflow-hidden border-b border-zinc-700/50 focus-visible:outline-none">
+            <div class="project-thumb-wrap">
+              <div class="project-skeleton" aria-hidden="true"></div>
+              <img src="https://image.thum.io/get/width/800/crop/500/noanimate/https://playlist-manifest.vercel.app/" alt="Playlist Manifest preview" class="project-thumb" loading="lazy" width="800" height="500">
+            </div>
           </a>
           <div class="p-5 sm:p-6 md:p-8 flex flex-col flex-1">
-            <div class="text-amber-400 mb-2 text-xs sm:text-sm font-medium">PRODUCTIVITY TOOL</div>
+            <div class="project-cat text-amber-300 mb-2 text-xs sm:text-sm">PRODUCTIVITY TOOL</div>
             <h3 class="text-xl sm:text-2xl font-semibold mb-2 sm:mb-3">Playlist Manifest</h3>
             <p class="text-zinc-400 mb-5 sm:mb-6 text-sm sm:text-base flex-1">Catalog any YouTube playlist into a clean, downloadable track list — metadata only, no files downloaded.</p>
             <a href="https://playlist-manifest.vercel.app/" target="_blank" rel="noopener noreferrer"
@@ -185,11 +240,14 @@
           </div>
         </div>
         <div class="bg-zinc-800 rounded-3xl overflow-hidden card-hover flex flex-col">
-          <a href="https://accepted-students.vercel.app/" target="_blank" rel="noopener noreferrer" class="block overflow-hidden border-b border-zinc-700/50">
-            <img src="https://image.thum.io/get/width/800/crop/500/noanimate/https://accepted-students.vercel.app/" alt="Accepted Students preview" class="project-thumb w-full bg-zinc-900" loading="lazy" width="800" height="500">
+          <a href="https://accepted-students.vercel.app/" target="_blank" rel="noopener noreferrer" class="block overflow-hidden border-b border-zinc-700/50 focus-visible:outline-none">
+            <div class="project-thumb-wrap">
+              <div class="project-skeleton" aria-hidden="true"></div>
+              <img src="https://image.thum.io/get/width/800/crop/500/noanimate/https://accepted-students.vercel.app/" alt="Accepted Students preview" class="project-thumb" loading="lazy" width="800" height="500">
+            </div>
           </a>
           <div class="p-5 sm:p-6 md:p-8 flex flex-col flex-1">
-            <div class="text-blue-400 mb-2 text-xs sm:text-sm font-medium">EDUCATION DIRECTORY</div>
+            <div class="project-cat text-blue-300 mb-2 text-xs sm:text-sm">EDUCATION DIRECTORY</div>
             <h3 class="text-xl sm:text-2xl font-semibold mb-2 sm:mb-3">Accepted Students</h3>
             <p class="text-zinc-400 mb-5 sm:mb-6 text-sm sm:text-base flex-1">Discover students accepted into competitive summer programs and international high schools.</p>
             <a href="https://accepted-students.vercel.app/" target="_blank" rel="noopener noreferrer"
@@ -199,11 +257,14 @@
           </div>
         </div>
         <div class="bg-zinc-800 rounded-3xl overflow-hidden card-hover flex flex-col">
-          <a href="https://link-hall.vercel.app/" target="_blank" rel="noopener noreferrer" class="block overflow-hidden border-b border-zinc-700/50">
-            <img src="https://image.thum.io/get/width/800/crop/500/noanimate/https://link-hall.vercel.app/" alt="Link Hall preview" class="project-thumb w-full bg-zinc-900" loading="lazy" width="800" height="500">
+          <a href="https://link-hall.vercel.app/" target="_blank" rel="noopener noreferrer" class="block overflow-hidden border-b border-zinc-700/50 focus-visible:outline-none">
+            <div class="project-thumb-wrap">
+              <div class="project-skeleton" aria-hidden="true"></div>
+              <img src="https://image.thum.io/get/width/800/crop/500/noanimate/https://link-hall.vercel.app/" alt="Link Hall preview" class="project-thumb" loading="lazy" width="800" height="500">
+            </div>
           </a>
           <div class="p-5 sm:p-6 md:p-8 flex flex-col flex-1">
-            <div class="text-rose-400 mb-2 text-xs sm:text-sm font-medium">DIRECTORY · CURATED LINKS</div>
+            <div class="project-cat text-rose-300 mb-2 text-xs sm:text-sm">DIRECTORY · CURATED LINKS</div>
             <h3 class="text-xl sm:text-2xl font-semibold mb-2 sm:mb-3">Link Hall</h3>
             <p class="text-zinc-400 mb-5 sm:mb-6 text-sm sm:text-base flex-1">A directory of good websites, sorted by category, with search and filtering — Roundup.</p>
             <a href="https://link-hall.vercel.app/" target="_blank" rel="noopener noreferrer"
@@ -213,11 +274,14 @@
           </div>
         </div>
         <div class="bg-zinc-800 rounded-3xl overflow-hidden card-hover flex flex-col">
-          <a href="https://advance-archive.vercel.app/" target="_blank" rel="noopener noreferrer" class="block overflow-hidden border-b border-zinc-700/50">
-            <img src="https://image.thum.io/get/width/800/crop/500/noanimate/https://advance-archive.vercel.app/" alt="NECTA A-Level Papers preview" class="project-thumb w-full bg-zinc-900" loading="lazy" width="800" height="500">
+          <a href="https://advance-archive.vercel.app/" target="_blank" rel="noopener noreferrer" class="block overflow-hidden border-b border-zinc-700/50 focus-visible:outline-none">
+            <div class="project-thumb-wrap">
+              <div class="project-skeleton" aria-hidden="true"></div>
+              <img src="https://image.thum.io/get/width/800/crop/500/noanimate/https://advance-archive.vercel.app/" alt="NECTA A-Level Papers preview" class="project-thumb" loading="lazy" width="800" height="500">
+            </div>
           </a>
           <div class="p-5 sm:p-6 md:p-8 flex flex-col flex-1">
-            <div class="text-violet-400 mb-2 text-xs sm:text-sm font-medium">EDUCATION · EXAM ARCHIVE</div>
+            <div class="project-cat text-violet-300 mb-2 text-xs sm:text-sm">EDUCATION · EXAM ARCHIVE</div>
             <h3 class="text-xl sm:text-2xl font-semibold mb-2 sm:mb-3">NECTA A-Level Papers</h3>
             <p class="text-zinc-400 mb-5 sm:mb-6 text-sm sm:text-base flex-1">Past papers and pre-mock exams for Form V and VI — view online or download for revision.</p>
             <a href="https://advance-archive.vercel.app/" target="_blank" rel="noopener noreferrer"
@@ -227,11 +291,14 @@
           </div>
         </div>
         <div class="bg-zinc-800 rounded-3xl overflow-hidden card-hover flex flex-col">
-          <a href="https://music-seedbox.vercel.app/" target="_blank" rel="noopener noreferrer" class="block overflow-hidden border-b border-zinc-700/50">
-            <img src="https://image.thum.io/get/width/800/crop/500/noanimate/https://music-seedbox.vercel.app/" alt="Music Seedbox preview" class="project-thumb w-full bg-zinc-900" loading="lazy" width="800" height="500">
+          <a href="https://music-seedbox.vercel.app/" target="_blank" rel="noopener noreferrer" class="block overflow-hidden border-b border-zinc-700/50 focus-visible:outline-none">
+            <div class="project-thumb-wrap">
+              <div class="project-skeleton" aria-hidden="true"></div>
+              <img src="https://image.thum.io/get/width/800/crop/500/noanimate/https://music-seedbox.vercel.app/" alt="Music Seedbox preview" class="project-thumb" loading="lazy" width="800" height="500">
+            </div>
           </a>
           <div class="p-5 sm:p-6 md:p-8 flex flex-col flex-1">
-            <div class="text-orange-400 mb-2 text-xs sm:text-sm font-medium">PRODUCTIVITY · TORRENT TOOL</div>
+            <div class="project-cat text-orange-300 mb-2 text-xs sm:text-sm">PRODUCTIVITY · TORRENT TOOL</div>
             <h3 class="text-xl sm:text-2xl font-semibold mb-2 sm:mb-3">Music Seedbox</h3>
             <p class="text-zinc-400 mb-5 sm:mb-6 text-sm sm:text-base flex-1">Create .torrent files from your own files entirely in the browser — magnet links, tags, and a local saved list.</p>
             <a href="https://music-seedbox.vercel.app/" target="_blank" rel="noopener noreferrer"
@@ -241,11 +308,14 @@
           </div>
         </div>
         <div class="bg-zinc-800 rounded-3xl overflow-hidden card-hover flex flex-col">
-          <a href="https://screen-list.vercel.app/" target="_blank" rel="noopener noreferrer" class="block overflow-hidden border-b border-zinc-700/50">
-            <img src="https://image.thum.io/get/width/800/crop/500/noanimate/https://screen-list.vercel.app/" alt="Screen List preview" class="project-thumb w-full bg-zinc-900" loading="lazy" width="800" height="500">
+          <a href="https://screen-list.vercel.app/" target="_blank" rel="noopener noreferrer" class="block overflow-hidden border-b border-zinc-700/50 focus-visible:outline-none">
+            <div class="project-thumb-wrap">
+              <div class="project-skeleton" aria-hidden="true"></div>
+              <img src="https://image.thum.io/get/width/800/crop/500/noanimate/https://screen-list.vercel.app/" alt="Screen List preview" class="project-thumb" loading="lazy" width="800" height="500">
+            </div>
           </a>
           <div class="p-5 sm:p-6 md:p-8 flex flex-col flex-1">
-            <div class="text-sky-400 mb-2 text-xs sm:text-sm font-medium">ENTERTAINMENT · WATCHLIST</div>
+            <div class="project-cat text-sky-300 mb-2 text-xs sm:text-sm">ENTERTAINMENT · WATCHLIST</div>
             <h3 class="text-xl sm:text-2xl font-semibold mb-2 sm:mb-3">Screen List</h3>
             <p class="text-zinc-400 mb-5 sm:mb-6 text-sm sm:text-base flex-1">A personal watchlist for movies and series — search, filter by type or year, and keep track of what is worth watching.</p>
             <a href="https://screen-list.vercel.app/" target="_blank" rel="noopener noreferrer"
@@ -255,11 +325,14 @@
           </div>
         </div>
         <div class="bg-zinc-800 rounded-3xl overflow-hidden card-hover flex flex-col">
-          <a href="https://fit-finds.vercel.app/" target="_blank" rel="noopener noreferrer" class="block overflow-hidden border-b border-zinc-700/50">
-            <img src="https://image.thum.io/get/width/800/crop/500/noanimate/https://fit-finds.vercel.app/" alt="Fit Finds preview" class="project-thumb w-full bg-zinc-900" loading="lazy" width="800" height="500">
+          <a href="https://fit-finds.vercel.app/" target="_blank" rel="noopener noreferrer" class="block overflow-hidden border-b border-zinc-700/50 focus-visible:outline-none">
+            <div class="project-thumb-wrap">
+              <div class="project-skeleton" aria-hidden="true"></div>
+              <img src="https://image.thum.io/get/width/800/crop/500/noanimate/https://fit-finds.vercel.app/" alt="Fit Finds preview" class="project-thumb" loading="lazy" width="800" height="500">
+            </div>
           </a>
           <div class="p-5 sm:p-6 md:p-8 flex flex-col flex-1">
-            <div class="text-pink-400 mb-2 text-xs sm:text-sm font-medium">FASHION · DISCOVERY</div>
+            <div class="project-cat text-pink-300 mb-2 text-xs sm:text-sm">FASHION · DISCOVERY</div>
             <h3 class="text-xl sm:text-2xl font-semibold mb-2 sm:mb-3">Fit Finds</h3>
             <p class="text-zinc-400 mb-5 sm:mb-6 text-sm sm:text-base flex-1">A curated list of fashion Instagram accounts and style inspiration worth following.</p>
             <a href="https://fit-finds.vercel.app/" target="_blank" rel="noopener noreferrer"
@@ -269,11 +342,14 @@
           </div>
         </div>
         <div class="bg-zinc-800 rounded-3xl overflow-hidden card-hover flex flex-col">
-          <a href="https://initial-read.vercel.app/" target="_blank" rel="noopener noreferrer" class="block overflow-hidden border-b border-zinc-700/50">
-            <img src="https://image.thum.io/get/width/800/crop/500/noanimate/https://initial-read.vercel.app/" alt="Initial Read preview" class="project-thumb w-full bg-zinc-900" loading="lazy" width="800" height="500">
+          <a href="https://initial-read.vercel.app/" target="_blank" rel="noopener noreferrer" class="block overflow-hidden border-b border-zinc-700/50 focus-visible:outline-none">
+            <div class="project-thumb-wrap">
+              <div class="project-skeleton" aria-hidden="true"></div>
+              <img src="https://image.thum.io/get/width/800/crop/500/noanimate/https://initial-read.vercel.app/" alt="Initial Read preview" class="project-thumb" loading="lazy" width="800" height="500">
+            </div>
           </a>
           <div class="p-5 sm:p-6 md:p-8 flex flex-col flex-1">
-            <div class="text-lime-400 mb-2 text-xs sm:text-sm font-medium">READING · CURATED LIST</div>
+            <div class="project-cat text-lime-300 mb-2 text-xs sm:text-sm">READING · CURATED LIST</div>
             <h3 class="text-xl sm:text-2xl font-semibold mb-2 sm:mb-3">Initial Read</h3>
             <p class="text-zinc-400 mb-5 sm:mb-6 text-sm sm:text-base flex-1">A short list of books worth reading at least once — stories and ideas that stay with you, growing slowly on purpose.</p>
             <a href="https://initial-read.vercel.app/" target="_blank" rel="noopener noreferrer"
@@ -283,11 +359,14 @@
           </div>
         </div>
         <div class="bg-zinc-800 rounded-3xl overflow-hidden card-hover flex flex-col">
-          <a href="https://karibu-jikoni.vercel.app/" target="_blank" rel="noopener noreferrer" class="block overflow-hidden border-b border-zinc-700/50">
-            <img src="https://image.thum.io/get/width/800/crop/500/noanimate/https://karibu-jikoni.vercel.app/" alt="Karibu Jikoni preview" class="project-thumb w-full bg-zinc-900" loading="lazy" width="800" height="500">
+          <a href="https://karibu-jikoni.vercel.app/" target="_blank" rel="noopener noreferrer" class="block overflow-hidden border-b border-zinc-700/50 focus-visible:outline-none">
+            <div class="project-thumb-wrap">
+              <div class="project-skeleton" aria-hidden="true"></div>
+              <img src="https://image.thum.io/get/width/800/crop/500/noanimate/https://karibu-jikoni.vercel.app/" alt="Karibu Jikoni preview" class="project-thumb" loading="lazy" width="800" height="500">
+            </div>
           </a>
           <div class="p-5 sm:p-6 md:p-8 flex flex-col flex-1">
-            <div class="text-yellow-400 mb-2 text-xs sm:text-sm font-medium">FOOD · RECIPE BOOK</div>
+            <div class="project-cat text-yellow-300 mb-2 text-xs sm:text-sm">FOOD · RECIPE BOOK</div>
             <h3 class="text-xl sm:text-2xl font-semibold mb-2 sm:mb-3">Karibu Jikoni</h3>
             <p class="text-zinc-400 mb-5 sm:mb-6 text-sm sm:text-base flex-1">Kitabu cha mapishi — a digital recipe book for home cooking, organized and easy to browse.</p>
             <a href="https://karibu-jikoni.vercel.app/" target="_blank" rel="noopener noreferrer"
@@ -297,11 +376,14 @@
           </div>
         </div>
         <div class="bg-zinc-800 rounded-3xl overflow-hidden card-hover flex flex-col">
-          <a href="https://night-timetable.vercel.app/" target="_blank" rel="noopener noreferrer" class="block overflow-hidden border-b border-zinc-700/50">
-            <img src="https://image.thum.io/get/width/800/crop/500/noanimate/https://night-timetable.vercel.app/" alt="Night Timetable preview" class="project-thumb w-full bg-zinc-900" loading="lazy" width="800" height="500">
+          <a href="https://night-timetable.vercel.app/" target="_blank" rel="noopener noreferrer" class="block overflow-hidden border-b border-zinc-700/50 focus-visible:outline-none">
+            <div class="project-thumb-wrap">
+              <div class="project-skeleton" aria-hidden="true"></div>
+              <img src="https://image.thum.io/get/width/800/crop/500/noanimate/https://night-timetable.vercel.app/" alt="Night Timetable preview" class="project-thumb" loading="lazy" width="800" height="500">
+            </div>
           </a>
           <div class="p-5 sm:p-6 md:p-8 flex flex-col flex-1">
-            <div class="text-cyan-400 mb-2 text-xs sm:text-sm font-medium">EDUCATION · SCHEDULE</div>
+            <div class="project-cat text-cyan-300 mb-2 text-xs sm:text-sm">EDUCATION · SCHEDULE</div>
             <h3 class="text-xl sm:text-2xl font-semibold mb-2 sm:mb-3">Night Timetable</h3>
             <p class="text-zinc-400 mb-5 sm:mb-6 text-sm sm:text-base flex-1">Public weekly schedule showing which teacher is teaching Form V / Form VI each night at St. Joseph Boys Science High School.</p>
             <a href="https://night-timetable.vercel.app/" target="_blank" rel="noopener noreferrer"
@@ -311,11 +393,14 @@
           </div>
         </div>
         <div class="bg-zinc-800 rounded-3xl overflow-hidden card-hover flex flex-col">
-          <a href="https://camino-islamico.vercel.app/" target="_blank" rel="noopener noreferrer" class="block overflow-hidden border-b border-zinc-700/50">
-            <img src="https://image.thum.io/get/width/800/crop/500/noanimate/https://camino-islamico.vercel.app/" alt="Waqt preview" class="project-thumb w-full bg-zinc-900" loading="lazy" width="800" height="500">
+          <a href="https://camino-islamico.vercel.app/" target="_blank" rel="noopener noreferrer" class="block overflow-hidden border-b border-zinc-700/50 focus-visible:outline-none">
+            <div class="project-thumb-wrap">
+              <div class="project-skeleton" aria-hidden="true"></div>
+              <img src="https://image.thum.io/get/width/800/crop/500/noanimate/https://camino-islamico.vercel.app/" alt="Waqt preview" class="project-thumb" loading="lazy" width="800" height="500">
+            </div>
           </a>
           <div class="p-5 sm:p-6 md:p-8 flex flex-col flex-1">
-            <div class="text-teal-400 mb-2 text-xs sm:text-sm font-medium">FAITH · PRAYER TIMES</div>
+            <div class="project-cat text-teal-300 mb-2 text-xs sm:text-sm">FAITH · PRAYER TIMES</div>
             <h3 class="text-xl sm:text-2xl font-semibold mb-2 sm:mb-3">Waqt</h3>
             <p class="text-zinc-400 mb-5 sm:mb-6 text-sm sm:text-base flex-1">Local prayer times, a verse for today, and a plain-language introduction for people new to Islam.</p>
             <a href="https://camino-islamico.vercel.app/" target="_blank" rel="noopener noreferrer"
@@ -525,6 +610,27 @@
       formStatus.classList.remove('hidden');
       formStatus.classList.add('text-cyan-400');
       contactForm.reset();
+    });
+
+    // Project thumbnail loading states
+    document.querySelectorAll('.project-thumb').forEach((img) => {
+      const wrap = img.closest('.project-thumb-wrap');
+      const markLoaded = () => {
+        img.classList.add('is-loaded');
+        if (wrap) wrap.classList.add('loaded');
+      };
+      if (img.complete && img.naturalWidth > 0) {
+        markLoaded();
+      } else {
+        img.addEventListener('load', markLoaded);
+        img.addEventListener('error', () => {
+          if (wrap) {
+            wrap.classList.add('loaded');
+            const sk = wrap.querySelector('.project-skeleton');
+            if (sk) sk.style.display = 'none';
+          }
+        });
+      }
     });
   </script>
 </body>
