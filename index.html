@@ -16,6 +16,7 @@
   <meta property="og:title" content="Visualixe | Think. Create. Innovate.">
   <meta property="og:description" content="We build practical digital solutions that simplify daily life, education, productivity, and collaboration.">
   <meta property="og:image" content="https://visualixe-foundation.vercel.app/visualixe.png">
+  <meta property="og:image:alt" content="Visualixe Foundation logo">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
@@ -29,7 +30,10 @@
     .hero-bg { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); }
     .logo-glow { filter: drop-shadow(0 0 15px rgba(34, 211, 238, 0.6)); }
     .card-hover { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
-    .card-hover:hover { transform: translateY(-8px) scale(1.03); }
+    @media (hover: hover) and (min-width: 768px) {
+      .card-hover:hover { transform: translateY(-6px) scale(1.02); }
+    }
+    .project-thumb { aspect-ratio: 16 / 10; object-fit: cover; object-position: top center; }
   </style>
 </head>
 <body class="bg-zinc-950 text-white font-sans">
@@ -147,118 +151,178 @@
   </section>
 
   <!-- Published Projects -->
-  <section id="published" class="py-24 bg-zinc-950">
+  <section id="published" class="py-16 sm:py-20 md:py-24 bg-zinc-950">
     <div class="max-w-7xl mx-auto px-6">
       <h2 class="text-4xl font-bold text-center mb-4">Published Projects</h2>
-      <p class="text-center text-zinc-400 mb-16 max-w-2xl mx-auto">Live projects already making an impact.</p>
-      <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
-        <div class="bg-zinc-800 rounded-3xl p-8 card-hover">
-          <div class="text-emerald-400 mb-2 text-sm font-medium">ENVIRONMENTAL MOVEMENT</div>
-          <h3 class="text-2xl font-semibold mb-3">Kijani Pulse Foundation</h3>
-          <p class="text-zinc-400 mb-6">Student-led environmental movement at St. Joseph Boys Science High School, Kilimanjaro.</p>
-          <a href="https://kijanipulse-foundation.vercel.app/" target="_blank" rel="noopener noreferrer"
-             class="inline-flex items-center gap-3 bg-emerald-600 hover:bg-emerald-700 px-6 py-3 rounded-2xl font-medium transition">
-            Visit Live Website <i class="fas fa-external-link-alt"></i>
+      <p class="text-center text-zinc-400 mb-10 sm:mb-12 md:mb-16 max-w-2xl mx-auto px-2">Live projects already making an impact.</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6 md:gap-8 max-w-5xl mx-auto">
+        <div class="bg-zinc-800 rounded-3xl overflow-hidden card-hover flex flex-col">
+          <a href="https://kijanipulse-foundation.vercel.app/" target="_blank" rel="noopener noreferrer" class="block overflow-hidden border-b border-zinc-700/50">
+            <img src="https://image.thum.io/get/width/800/crop/500/noanimate/https://kijanipulse-foundation.vercel.app/" alt="KijaniPulse preview" class="project-thumb w-full bg-zinc-900" loading="lazy" width="800" height="500">
           </a>
+          <div class="p-5 sm:p-6 md:p-8 flex flex-col flex-1">
+            <div class="text-emerald-400 mb-2 text-xs sm:text-sm font-medium">ENVIRONMENTAL MOVEMENT</div>
+            <h3 class="text-xl sm:text-2xl font-semibold mb-2 sm:mb-3">KijaniPulse</h3>
+            <p class="text-zinc-400 mb-5 sm:mb-6 text-sm sm:text-base flex-1">Student-led environmental movement at St. Joseph Boys Science High School, Kilimanjaro.</p>
+            <a href="https://kijanipulse-foundation.vercel.app/" target="_blank" rel="noopener noreferrer"
+               class="inline-flex items-center justify-center gap-2 sm:gap-3 bg-emerald-600 hover:bg-emerald-700 px-5 py-2.5 sm:px-6 sm:py-3 rounded-2xl font-medium transition text-sm sm:text-base w-full sm:w-auto">
+              Visit Live Website <i class="fas fa-external-link-alt"></i>
+            </a>
+          </div>
         </div>
-        <div class="bg-zinc-800 rounded-3xl p-8 card-hover">
-          <div class="text-amber-400 mb-2 text-sm font-medium">PRODUCTIVITY TOOL</div>
-          <h3 class="text-2xl font-semibold mb-3">Playlist Manifest</h3>
-          <p class="text-zinc-400 mb-6">Catalog any YouTube playlist into a clean, downloadable track list — metadata only, no files downloaded.</p>
-          <a href="https://playlist-manifest.vercel.app/" target="_blank" rel="noopener noreferrer"
-             class="inline-flex items-center gap-3 bg-amber-600 hover:bg-amber-700 px-6 py-3 rounded-2xl font-medium transition">
-            Visit Live Website <i class="fas fa-external-link-alt"></i>
+        <div class="bg-zinc-800 rounded-3xl overflow-hidden card-hover flex flex-col">
+          <a href="https://playlist-manifest.vercel.app/" target="_blank" rel="noopener noreferrer" class="block overflow-hidden border-b border-zinc-700/50">
+            <img src="https://image.thum.io/get/width/800/crop/500/noanimate/https://playlist-manifest.vercel.app/" alt="Playlist Manifest preview" class="project-thumb w-full bg-zinc-900" loading="lazy" width="800" height="500">
           </a>
+          <div class="p-5 sm:p-6 md:p-8 flex flex-col flex-1">
+            <div class="text-amber-400 mb-2 text-xs sm:text-sm font-medium">PRODUCTIVITY TOOL</div>
+            <h3 class="text-xl sm:text-2xl font-semibold mb-2 sm:mb-3">Playlist Manifest</h3>
+            <p class="text-zinc-400 mb-5 sm:mb-6 text-sm sm:text-base flex-1">Catalog any YouTube playlist into a clean, downloadable track list — metadata only, no files downloaded.</p>
+            <a href="https://playlist-manifest.vercel.app/" target="_blank" rel="noopener noreferrer"
+               class="inline-flex items-center justify-center gap-2 sm:gap-3 bg-amber-600 hover:bg-amber-700 px-5 py-2.5 sm:px-6 sm:py-3 rounded-2xl font-medium transition text-sm sm:text-base w-full sm:w-auto">
+              Visit Live Website <i class="fas fa-external-link-alt"></i>
+            </a>
+          </div>
         </div>
-        <div class="bg-zinc-800 rounded-3xl p-8 card-hover">
-          <div class="text-blue-400 mb-2 text-sm font-medium">EDUCATION DIRECTORY</div>
-          <h3 class="text-2xl font-semibold mb-3">Accepted Students</h3>
-          <p class="text-zinc-400 mb-6">Discover students accepted into competitive summer programs and international high schools.</p>
-          <a href="https://accepted-students.vercel.app/" target="_blank" rel="noopener noreferrer"
-             class="inline-flex items-center gap-3 bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-2xl font-medium transition">
-            Visit Live Website <i class="fas fa-external-link-alt"></i>
+        <div class="bg-zinc-800 rounded-3xl overflow-hidden card-hover flex flex-col">
+          <a href="https://accepted-students.vercel.app/" target="_blank" rel="noopener noreferrer" class="block overflow-hidden border-b border-zinc-700/50">
+            <img src="https://image.thum.io/get/width/800/crop/500/noanimate/https://accepted-students.vercel.app/" alt="Accepted Students preview" class="project-thumb w-full bg-zinc-900" loading="lazy" width="800" height="500">
           </a>
+          <div class="p-5 sm:p-6 md:p-8 flex flex-col flex-1">
+            <div class="text-blue-400 mb-2 text-xs sm:text-sm font-medium">EDUCATION DIRECTORY</div>
+            <h3 class="text-xl sm:text-2xl font-semibold mb-2 sm:mb-3">Accepted Students</h3>
+            <p class="text-zinc-400 mb-5 sm:mb-6 text-sm sm:text-base flex-1">Discover students accepted into competitive summer programs and international high schools.</p>
+            <a href="https://accepted-students.vercel.app/" target="_blank" rel="noopener noreferrer"
+               class="inline-flex items-center justify-center gap-2 sm:gap-3 bg-blue-600 hover:bg-blue-700 px-5 py-2.5 sm:px-6 sm:py-3 rounded-2xl font-medium transition text-sm sm:text-base w-full sm:w-auto">
+              Visit Live Website <i class="fas fa-external-link-alt"></i>
+            </a>
+          </div>
         </div>
-        <div class="bg-zinc-800 rounded-3xl p-8 card-hover">
-          <div class="text-rose-400 mb-2 text-sm font-medium">DIRECTORY · CURATED LINKS</div>
-          <h3 class="text-2xl font-semibold mb-3">Link Hall</h3>
-          <p class="text-zinc-400 mb-6">A directory of good websites, sorted by category, with search and filtering — Roundup.</p>
-          <a href="https://link-hall.vercel.app/" target="_blank" rel="noopener noreferrer"
-             class="inline-flex items-center gap-3 bg-rose-600 hover:bg-rose-700 px-6 py-3 rounded-2xl font-medium transition">
-            Visit Live Website <i class="fas fa-external-link-alt"></i>
+        <div class="bg-zinc-800 rounded-3xl overflow-hidden card-hover flex flex-col">
+          <a href="https://link-hall.vercel.app/" target="_blank" rel="noopener noreferrer" class="block overflow-hidden border-b border-zinc-700/50">
+            <img src="https://image.thum.io/get/width/800/crop/500/noanimate/https://link-hall.vercel.app/" alt="Link Hall preview" class="project-thumb w-full bg-zinc-900" loading="lazy" width="800" height="500">
           </a>
+          <div class="p-5 sm:p-6 md:p-8 flex flex-col flex-1">
+            <div class="text-rose-400 mb-2 text-xs sm:text-sm font-medium">DIRECTORY · CURATED LINKS</div>
+            <h3 class="text-xl sm:text-2xl font-semibold mb-2 sm:mb-3">Link Hall</h3>
+            <p class="text-zinc-400 mb-5 sm:mb-6 text-sm sm:text-base flex-1">A directory of good websites, sorted by category, with search and filtering — Roundup.</p>
+            <a href="https://link-hall.vercel.app/" target="_blank" rel="noopener noreferrer"
+               class="inline-flex items-center justify-center gap-2 sm:gap-3 bg-rose-600 hover:bg-rose-700 px-5 py-2.5 sm:px-6 sm:py-3 rounded-2xl font-medium transition text-sm sm:text-base w-full sm:w-auto">
+              Visit Live Website <i class="fas fa-external-link-alt"></i>
+            </a>
+          </div>
         </div>
-        <div class="bg-zinc-800 rounded-3xl p-8 card-hover">
-          <div class="text-violet-400 mb-2 text-sm font-medium">EDUCATION · EXAM ARCHIVE</div>
-          <h3 class="text-2xl font-semibold mb-3">NECTA A-Level Papers</h3>
-          <p class="text-zinc-400 mb-6">A running archive of past Advanced Level exam papers for Form V and VI candidates — open or download offline.</p>
-          <a href="https://advance-archive.vercel.app/" target="_blank" rel="noopener noreferrer"
-             class="inline-flex items-center gap-3 bg-violet-600 hover:bg-violet-700 px-6 py-3 rounded-2xl font-medium transition">
-            Visit Live Website <i class="fas fa-external-link-alt"></i>
+        <div class="bg-zinc-800 rounded-3xl overflow-hidden card-hover flex flex-col">
+          <a href="https://advance-archive.vercel.app/" target="_blank" rel="noopener noreferrer" class="block overflow-hidden border-b border-zinc-700/50">
+            <img src="https://image.thum.io/get/width/800/crop/500/noanimate/https://advance-archive.vercel.app/" alt="NECTA A-Level Papers preview" class="project-thumb w-full bg-zinc-900" loading="lazy" width="800" height="500">
           </a>
+          <div class="p-5 sm:p-6 md:p-8 flex flex-col flex-1">
+            <div class="text-violet-400 mb-2 text-xs sm:text-sm font-medium">EDUCATION · EXAM ARCHIVE</div>
+            <h3 class="text-xl sm:text-2xl font-semibold mb-2 sm:mb-3">NECTA A-Level Papers</h3>
+            <p class="text-zinc-400 mb-5 sm:mb-6 text-sm sm:text-base flex-1">Past papers and pre-mock exams for Form V and VI — view online or download for revision.</p>
+            <a href="https://advance-archive.vercel.app/" target="_blank" rel="noopener noreferrer"
+               class="inline-flex items-center justify-center gap-2 sm:gap-3 bg-violet-600 hover:bg-violet-700 px-5 py-2.5 sm:px-6 sm:py-3 rounded-2xl font-medium transition text-sm sm:text-base w-full sm:w-auto">
+              Visit Live Website <i class="fas fa-external-link-alt"></i>
+            </a>
+          </div>
         </div>
-        <div class="bg-zinc-800 rounded-3xl p-8 card-hover">
-          <div class="text-orange-400 mb-2 text-sm font-medium">PRODUCTIVITY · TORRENT TOOL</div>
-          <h3 class="text-2xl font-semibold mb-3">Music Seedbox</h3>
-          <p class="text-zinc-400 mb-6">Create .torrent files from your own files entirely in the browser — magnet links, tags, and a local saved list.</p>
-          <a href="https://music-seedbox.vercel.app/" target="_blank" rel="noopener noreferrer"
-             class="inline-flex items-center gap-3 bg-orange-600 hover:bg-orange-700 px-6 py-3 rounded-2xl font-medium transition">
-            Visit Live Website <i class="fas fa-external-link-alt"></i>
+        <div class="bg-zinc-800 rounded-3xl overflow-hidden card-hover flex flex-col">
+          <a href="https://music-seedbox.vercel.app/" target="_blank" rel="noopener noreferrer" class="block overflow-hidden border-b border-zinc-700/50">
+            <img src="https://image.thum.io/get/width/800/crop/500/noanimate/https://music-seedbox.vercel.app/" alt="Music Seedbox preview" class="project-thumb w-full bg-zinc-900" loading="lazy" width="800" height="500">
           </a>
+          <div class="p-5 sm:p-6 md:p-8 flex flex-col flex-1">
+            <div class="text-orange-400 mb-2 text-xs sm:text-sm font-medium">PRODUCTIVITY · TORRENT TOOL</div>
+            <h3 class="text-xl sm:text-2xl font-semibold mb-2 sm:mb-3">Music Seedbox</h3>
+            <p class="text-zinc-400 mb-5 sm:mb-6 text-sm sm:text-base flex-1">Create .torrent files from your own files entirely in the browser — magnet links, tags, and a local saved list.</p>
+            <a href="https://music-seedbox.vercel.app/" target="_blank" rel="noopener noreferrer"
+               class="inline-flex items-center justify-center gap-2 sm:gap-3 bg-orange-600 hover:bg-orange-700 px-5 py-2.5 sm:px-6 sm:py-3 rounded-2xl font-medium transition text-sm sm:text-base w-full sm:w-auto">
+              Visit Live Website <i class="fas fa-external-link-alt"></i>
+            </a>
+          </div>
         </div>
-        <div class="bg-zinc-800 rounded-3xl p-8 card-hover">
-          <div class="text-sky-400 mb-2 text-sm font-medium">ENTERTAINMENT · WATCHLIST</div>
-          <h3 class="text-2xl font-semibold mb-3">Screen List</h3>
-          <p class="text-zinc-400 mb-6">A personal watchlist for movies and series — search, filter by type or year, and keep track of what is worth watching.</p>
-          <a href="https://screen-list.vercel.app/" target="_blank" rel="noopener noreferrer"
-             class="inline-flex items-center gap-3 bg-sky-600 hover:bg-sky-700 px-6 py-3 rounded-2xl font-medium transition">
-            Visit Live Website <i class="fas fa-external-link-alt"></i>
+        <div class="bg-zinc-800 rounded-3xl overflow-hidden card-hover flex flex-col">
+          <a href="https://screen-list.vercel.app/" target="_blank" rel="noopener noreferrer" class="block overflow-hidden border-b border-zinc-700/50">
+            <img src="https://image.thum.io/get/width/800/crop/500/noanimate/https://screen-list.vercel.app/" alt="Screen List preview" class="project-thumb w-full bg-zinc-900" loading="lazy" width="800" height="500">
           </a>
+          <div class="p-5 sm:p-6 md:p-8 flex flex-col flex-1">
+            <div class="text-sky-400 mb-2 text-xs sm:text-sm font-medium">ENTERTAINMENT · WATCHLIST</div>
+            <h3 class="text-xl sm:text-2xl font-semibold mb-2 sm:mb-3">Screen List</h3>
+            <p class="text-zinc-400 mb-5 sm:mb-6 text-sm sm:text-base flex-1">A personal watchlist for movies and series — search, filter by type or year, and keep track of what is worth watching.</p>
+            <a href="https://screen-list.vercel.app/" target="_blank" rel="noopener noreferrer"
+               class="inline-flex items-center justify-center gap-2 sm:gap-3 bg-sky-600 hover:bg-sky-700 px-5 py-2.5 sm:px-6 sm:py-3 rounded-2xl font-medium transition text-sm sm:text-base w-full sm:w-auto">
+              Visit Live Website <i class="fas fa-external-link-alt"></i>
+            </a>
+          </div>
         </div>
-        <div class="bg-zinc-800 rounded-3xl p-8 card-hover">
-          <div class="text-pink-400 mb-2 text-sm font-medium">FASHION · DISCOVERY</div>
-          <h3 class="text-2xl font-semibold mb-3">Fit Finds</h3>
-          <p class="text-zinc-400 mb-6">A curated list of fashion Instagram accounts and style inspiration worth following.</p>
-          <a href="https://fit-finds.vercel.app/" target="_blank" rel="noopener noreferrer"
-             class="inline-flex items-center gap-3 bg-pink-600 hover:bg-pink-700 px-6 py-3 rounded-2xl font-medium transition">
-            Visit Live Website <i class="fas fa-external-link-alt"></i>
+        <div class="bg-zinc-800 rounded-3xl overflow-hidden card-hover flex flex-col">
+          <a href="https://fit-finds.vercel.app/" target="_blank" rel="noopener noreferrer" class="block overflow-hidden border-b border-zinc-700/50">
+            <img src="https://image.thum.io/get/width/800/crop/500/noanimate/https://fit-finds.vercel.app/" alt="Fit Finds preview" class="project-thumb w-full bg-zinc-900" loading="lazy" width="800" height="500">
           </a>
+          <div class="p-5 sm:p-6 md:p-8 flex flex-col flex-1">
+            <div class="text-pink-400 mb-2 text-xs sm:text-sm font-medium">FASHION · DISCOVERY</div>
+            <h3 class="text-xl sm:text-2xl font-semibold mb-2 sm:mb-3">Fit Finds</h3>
+            <p class="text-zinc-400 mb-5 sm:mb-6 text-sm sm:text-base flex-1">A curated list of fashion Instagram accounts and style inspiration worth following.</p>
+            <a href="https://fit-finds.vercel.app/" target="_blank" rel="noopener noreferrer"
+               class="inline-flex items-center justify-center gap-2 sm:gap-3 bg-pink-600 hover:bg-pink-700 px-5 py-2.5 sm:px-6 sm:py-3 rounded-2xl font-medium transition text-sm sm:text-base w-full sm:w-auto">
+              Visit Live Website <i class="fas fa-external-link-alt"></i>
+            </a>
+          </div>
         </div>
-        <div class="bg-zinc-800 rounded-3xl p-8 card-hover">
-          <div class="text-lime-400 mb-2 text-sm font-medium">READING · CURATED LIST</div>
-          <h3 class="text-2xl font-semibold mb-3">Initial Read</h3>
-          <p class="text-zinc-400 mb-6">A short list of books worth reading at least once — stories and ideas that stay with you, growing slowly on purpose.</p>
-          <a href="https://initial-read.vercel.app/" target="_blank" rel="noopener noreferrer"
-             class="inline-flex items-center gap-3 bg-lime-600 hover:bg-lime-700 px-6 py-3 rounded-2xl font-medium transition">
-            Visit Live Website <i class="fas fa-external-link-alt"></i>
+        <div class="bg-zinc-800 rounded-3xl overflow-hidden card-hover flex flex-col">
+          <a href="https://initial-read.vercel.app/" target="_blank" rel="noopener noreferrer" class="block overflow-hidden border-b border-zinc-700/50">
+            <img src="https://image.thum.io/get/width/800/crop/500/noanimate/https://initial-read.vercel.app/" alt="Initial Read preview" class="project-thumb w-full bg-zinc-900" loading="lazy" width="800" height="500">
           </a>
+          <div class="p-5 sm:p-6 md:p-8 flex flex-col flex-1">
+            <div class="text-lime-400 mb-2 text-xs sm:text-sm font-medium">READING · CURATED LIST</div>
+            <h3 class="text-xl sm:text-2xl font-semibold mb-2 sm:mb-3">Initial Read</h3>
+            <p class="text-zinc-400 mb-5 sm:mb-6 text-sm sm:text-base flex-1">A short list of books worth reading at least once — stories and ideas that stay with you, growing slowly on purpose.</p>
+            <a href="https://initial-read.vercel.app/" target="_blank" rel="noopener noreferrer"
+               class="inline-flex items-center justify-center gap-2 sm:gap-3 bg-lime-600 hover:bg-lime-700 px-5 py-2.5 sm:px-6 sm:py-3 rounded-2xl font-medium transition text-sm sm:text-base w-full sm:w-auto">
+              Visit Live Website <i class="fas fa-external-link-alt"></i>
+            </a>
+          </div>
         </div>
-        <div class="bg-zinc-800 rounded-3xl p-8 card-hover">
-          <div class="text-yellow-400 mb-2 text-sm font-medium">FOOD · RECIPE BOOK</div>
-          <h3 class="text-2xl font-semibold mb-3">Karibu Jikoni</h3>
-          <p class="text-zinc-400 mb-6">Kitabu cha mapishi — a digital recipe book for home cooking, organized and easy to browse.</p>
-          <a href="https://karibu-jikoni.vercel.app/" target="_blank" rel="noopener noreferrer"
-             class="inline-flex items-center gap-3 bg-yellow-600 hover:bg-yellow-700 px-6 py-3 rounded-2xl font-medium transition">
-            Visit Live Website <i class="fas fa-external-link-alt"></i>
+        <div class="bg-zinc-800 rounded-3xl overflow-hidden card-hover flex flex-col">
+          <a href="https://karibu-jikoni.vercel.app/" target="_blank" rel="noopener noreferrer" class="block overflow-hidden border-b border-zinc-700/50">
+            <img src="https://image.thum.io/get/width/800/crop/500/noanimate/https://karibu-jikoni.vercel.app/" alt="Karibu Jikoni preview" class="project-thumb w-full bg-zinc-900" loading="lazy" width="800" height="500">
           </a>
+          <div class="p-5 sm:p-6 md:p-8 flex flex-col flex-1">
+            <div class="text-yellow-400 mb-2 text-xs sm:text-sm font-medium">FOOD · RECIPE BOOK</div>
+            <h3 class="text-xl sm:text-2xl font-semibold mb-2 sm:mb-3">Karibu Jikoni</h3>
+            <p class="text-zinc-400 mb-5 sm:mb-6 text-sm sm:text-base flex-1">Kitabu cha mapishi — a digital recipe book for home cooking, organized and easy to browse.</p>
+            <a href="https://karibu-jikoni.vercel.app/" target="_blank" rel="noopener noreferrer"
+               class="inline-flex items-center justify-center gap-2 sm:gap-3 bg-yellow-600 hover:bg-yellow-700 px-5 py-2.5 sm:px-6 sm:py-3 rounded-2xl font-medium transition text-sm sm:text-base w-full sm:w-auto">
+              Visit Live Website <i class="fas fa-external-link-alt"></i>
+            </a>
+          </div>
         </div>
-        <div class="bg-zinc-800 rounded-3xl p-8 card-hover">
-          <div class="text-cyan-400 mb-2 text-sm font-medium">EDUCATION · SCHEDULE</div>
-          <h3 class="text-2xl font-semibold mb-3">Night Timetable</h3>
-          <p class="text-zinc-400 mb-6">Public weekly schedule showing which teacher is teaching Form V / Form VI each night at St. Joseph Boys Science High School.</p>
-          <a href="https://night-timetable.vercel.app/" target="_blank" rel="noopener noreferrer"
-             class="inline-flex items-center gap-3 bg-cyan-600 hover:bg-cyan-700 px-6 py-3 rounded-2xl font-medium transition">
-            Visit Live Website <i class="fas fa-external-link-alt"></i>
+        <div class="bg-zinc-800 rounded-3xl overflow-hidden card-hover flex flex-col">
+          <a href="https://night-timetable.vercel.app/" target="_blank" rel="noopener noreferrer" class="block overflow-hidden border-b border-zinc-700/50">
+            <img src="https://image.thum.io/get/width/800/crop/500/noanimate/https://night-timetable.vercel.app/" alt="Night Timetable preview" class="project-thumb w-full bg-zinc-900" loading="lazy" width="800" height="500">
           </a>
+          <div class="p-5 sm:p-6 md:p-8 flex flex-col flex-1">
+            <div class="text-cyan-400 mb-2 text-xs sm:text-sm font-medium">EDUCATION · SCHEDULE</div>
+            <h3 class="text-xl sm:text-2xl font-semibold mb-2 sm:mb-3">Night Timetable</h3>
+            <p class="text-zinc-400 mb-5 sm:mb-6 text-sm sm:text-base flex-1">Public weekly schedule showing which teacher is teaching Form V / Form VI each night at St. Joseph Boys Science High School.</p>
+            <a href="https://night-timetable.vercel.app/" target="_blank" rel="noopener noreferrer"
+               class="inline-flex items-center justify-center gap-2 sm:gap-3 bg-cyan-600 hover:bg-cyan-700 px-5 py-2.5 sm:px-6 sm:py-3 rounded-2xl font-medium transition text-sm sm:text-base w-full sm:w-auto">
+              Visit Live Website <i class="fas fa-external-link-alt"></i>
+            </a>
+          </div>
         </div>
-        <div class="bg-zinc-800 rounded-3xl p-8 card-hover">
-          <div class="text-teal-400 mb-2 text-sm font-medium">FAITH · PRAYER TIMES</div>
-          <h3 class="text-2xl font-semibold mb-3">Camino Islamico</h3>
-          <p class="text-zinc-400 mb-6">Waqt — local prayer times, a verse for today, and a plain-language introduction for people new to Islam.</p>
-          <a href="https://camino-islamico.vercel.app/" target="_blank" rel="noopener noreferrer"
-             class="inline-flex items-center gap-3 bg-teal-600 hover:bg-teal-700 px-6 py-3 rounded-2xl font-medium transition">
-            Visit Live Website <i class="fas fa-external-link-alt"></i>
+        <div class="bg-zinc-800 rounded-3xl overflow-hidden card-hover flex flex-col">
+          <a href="https://camino-islamico.vercel.app/" target="_blank" rel="noopener noreferrer" class="block overflow-hidden border-b border-zinc-700/50">
+            <img src="https://image.thum.io/get/width/800/crop/500/noanimate/https://camino-islamico.vercel.app/" alt="Waqt preview" class="project-thumb w-full bg-zinc-900" loading="lazy" width="800" height="500">
           </a>
+          <div class="p-5 sm:p-6 md:p-8 flex flex-col flex-1">
+            <div class="text-teal-400 mb-2 text-xs sm:text-sm font-medium">FAITH · PRAYER TIMES</div>
+            <h3 class="text-xl sm:text-2xl font-semibold mb-2 sm:mb-3">Waqt</h3>
+            <p class="text-zinc-400 mb-5 sm:mb-6 text-sm sm:text-base flex-1">Local prayer times, a verse for today, and a plain-language introduction for people new to Islam.</p>
+            <a href="https://camino-islamico.vercel.app/" target="_blank" rel="noopener noreferrer"
+               class="inline-flex items-center justify-center gap-2 sm:gap-3 bg-teal-600 hover:bg-teal-700 px-5 py-2.5 sm:px-6 sm:py-3 rounded-2xl font-medium transition text-sm sm:text-base w-full sm:w-auto">
+              Visit Live Website <i class="fas fa-external-link-alt"></i>
+            </a>
+          </div>
         </div>
       </div>
     </div>
