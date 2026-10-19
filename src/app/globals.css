@@ -1,0 +1,80 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+.hero-bg {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+}
+
+.logo-glow {
+  filter: drop-shadow(0 0 15px rgba(34, 211, 238, 0.6));
+}
+
+.card-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media (hover: hover) and (min-width: 768px) {
+  .card-hover:hover {
+    transform: translateY(-6px) scale(1.02);
+  }
+}
+
+.project-thumb-wrap {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  background: #18181b;
+  overflow: hidden;
+}
+
+.project-skeleton {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, #27272a 0%, #3f3f46 50%, #27272a 100%);
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.4s ease-in-out infinite;
+}
+
+@keyframes skeleton-shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.project-thumb {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.project-thumb.is-loaded {
+  opacity: 1;
+}
+
+.project-thumb.is-loaded + .project-skeleton,
+.project-thumb-wrap.loaded .project-skeleton {
+  display: none;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid #22d3ee;
+  outline-offset: 3px;
+}
+
+.project-cat {
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
