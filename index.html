@@ -4,49 +4,69 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Visualixe | Think. Create. Innovate.</title>
+  <meta name="description" content="Visualixe Foundation builds practical apps and websites that solve real problems in education, productivity, and daily life — based in Tanzania and beyond.">
+  <meta name="theme-color" content="#09090b">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://visualixe-foundation.vercel.app/">
+  <meta property="og:title" content="Visualixe | Think. Create. Innovate.">
+  <meta property="og:description" content="Practical digital solutions for education, productivity, and daily life. Apps & websites that solve real problems.">
+  <meta property="og:image" content="https://visualixe-foundation.vercel.app/visualixe.png">
+  <meta property="og:site_name" content="Visualixe Foundation">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Visualixe | Think. Create. Innovate.">
+  <meta name="twitter:description" content="Practical digital solutions for education, productivity, and daily life.">
+  <meta name="twitter:image" content="https://visualixe-foundation.vercel.app/visualixe.png">
+
+  <!-- Favicon & Apple Touch -->
+  <link rel="icon" type="image/png" href="visualixe.png">
+  <link rel="apple-touch-icon" href="visualixe.png">
+
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
   <style>
     .hero-bg { background: linear-gradient(135deg, #0f172a 0%, #1e2937 100%); }
     .logo-glow { filter: drop-shadow(0 0 15px rgba(34, 211, 238, 0.6)); }
     .card-hover { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
-    .card-hover:hover { transform: translateY(-8px) scale(1.03); }
+    .card-hover:hover { transform: translateY(-6px); box-shadow: 0 20px 40px -15px rgba(0,0,0,0.5); }
   </style>
 </head>
-<body class="bg-zinc-950 text-white font-sans">
+<body class="bg-zinc-950 text-white font-sans antialiased">
 
   <!-- Navbar -->
-  <nav class="fixed top-0 w-full bg-zinc-950/95 backdrop-blur-md z-50 border-b border-zinc-800">
+  <nav class="fixed top-0 w-full bg-zinc-950/95 backdrop-blur-md z-50 border-b border-zinc-800" role="navigation" aria-label="Main">
     <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-      <div class="flex items-center gap-3">
-        <img src="visualixe.png" alt="Visualixe Logo" class="h-10 logo-glow">
+      <a href="#" class="flex items-center gap-3">
+        <img src="visualixe.png" alt="Visualixe Logo" class="h-10 logo-glow" width="40" height="40">
         <span class="text-2xl font-bold tracking-tight">Visualixe Foundation</span>
-      </div>
+      </a>
 
-      <!-- Desktop Menu -->
       <div class="hidden md:flex gap-8 text-lg">
         <a href="#services" class="hover:text-cyan-400 transition">Services</a>
         <a href="#published" class="hover:text-cyan-400 transition">Published</a>
+        <a href="#projects" class="hover:text-cyan-400 transition">In Progress</a>
         <a href="#about" class="hover:text-cyan-400 transition">About</a>
         <a href="#contact" class="hover:text-cyan-400 transition">Contact</a>
       </div>
 
-      <a href="#contact" class="hidden md:block bg-cyan-500 hover:bg-cyan-600 px-6 py-2.5 rounded-full font-medium transition">Start a Project</a>
+      <a href="#contact" class="hidden md:inline-block bg-cyan-500 hover:bg-cyan-600 px-6 py-2.5 rounded-full font-medium transition">Start a Project</a>
 
-      <!-- Mobile Menu Button -->
-      <button id="mobileMenuBtn" class="md:hidden text-3xl">
-        <i class="fas fa-bars"></i>
+      <button id="mobileMenuBtn" type="button" class="md:hidden text-3xl p-1" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+        <i class="fas fa-bars" aria-hidden="true"></i>
       </button>
     </div>
 
-    <!-- Mobile Menu -->
-    <div id="mobileMenu" class="hidden md:hidden bg-zinc-950 border-t border-zinc-800 py-6">
+    <div id="mobileMenu" class="hidden md:hidden bg-zinc-950 border-t border-zinc-800 py-6" role="menu">
       <div class="flex flex-col gap-6 px-6 text-lg">
-        <a href="#services" class="hover:text-cyan-400">Services</a>
-        <a href="#published" class="hover:text-cyan-400">Published</a>
-        <a href="#about" class="hover:text-cyan-400">About</a>
-        <a href="#contact" class="hover:text-cyan-400">Contact</a>
-        <a href="#contact" class="bg-cyan-500 hover:bg-cyan-600 px-6 py-3 rounded-full font-medium text-center mt-4">Start a Project</a>
+        <a href="#services" class="hover:text-cyan-400" role="menuitem">Services</a>
+        <a href="#published" class="hover:text-cyan-400" role="menuitem">Published</a>
+        <a href="#projects" class="hover:text-cyan-400" role="menuitem">In Progress</a>
+        <a href="#about" class="hover:text-cyan-400" role="menuitem">About</a>
+        <a href="#contact" class="hover:text-cyan-400" role="menuitem">Contact</a>
+        <a href="#contact" class="bg-cyan-500 hover:bg-cyan-600 px-6 py-3 rounded-full font-medium text-center mt-2">Start a Project</a>
       </div>
     </div>
   </nav>
@@ -61,13 +81,13 @@
         <p class="text-xl text-zinc-400 max-w-lg">
           We build practical digital solutions that simplify daily life, education, productivity, and collaboration.
         </p>
-        <div class="flex gap-4">
+        <div class="flex flex-wrap gap-4">
           <a href="#projects" class="bg-white text-black px-8 py-4 rounded-full font-semibold text-lg hover:bg-zinc-200 transition">See In Progress</a>
           <a href="#published" class="border border-cyan-400 text-cyan-400 px-8 py-4 rounded-full font-semibold text-lg hover:bg-cyan-400 hover:text-black transition">View Published Work</a>
         </div>
       </div>
       <div class="flex justify-center">
-        <img src="visualixe.png" alt="Visualixe" class="w-full max-w-md logo-glow">
+        <img src="visualixe.png" alt="Visualixe" class="w-full max-w-md logo-glow" width="400" height="400">
       </div>
     </div>
   </section>
@@ -77,20 +97,19 @@
     <div class="max-w-7xl mx-auto px-6">
       <h2 class="text-4xl font-bold text-center mb-4">Our Services</h2>
       <p class="text-center text-zinc-400 mb-16 max-w-2xl mx-auto">From idea to a working product — we help you every step of the way.</p>
-      
       <div class="grid md:grid-cols-3 gap-8">
         <div class="bg-zinc-800 rounded-3xl p-8 card-hover text-center">
-          <i class="fas fa-mobile-alt text-5xl text-cyan-400 mb-6"></i>
+          <i class="fas fa-mobile-alt text-5xl text-cyan-400 mb-6" aria-hidden="true"></i>
           <h3 class="text-2xl font-semibold mb-3">Mobile & Web Apps</h3>
           <p class="text-zinc-400">Custom applications tailored to solve specific real-world problems.</p>
         </div>
         <div class="bg-zinc-800 rounded-3xl p-8 card-hover text-center">
-          <i class="fas fa-globe text-5xl text-cyan-400 mb-6"></i>
+          <i class="fas fa-globe text-5xl text-cyan-400 mb-6" aria-hidden="true"></i>
           <h3 class="text-2xl font-semibold mb-3">Business Websites</h3>
           <p class="text-zinc-400">Professional, fast-loading websites that represent your vision.</p>
         </div>
         <div class="bg-zinc-800 rounded-3xl p-8 card-hover text-center">
-          <i class="fas fa-cogs text-5xl text-cyan-400 mb-6"></i>
+          <i class="fas fa-cogs text-5xl text-cyan-400 mb-6" aria-hidden="true"></i>
           <h3 class="text-2xl font-semibold mb-3">Automation Tools</h3>
           <p class="text-zinc-400">Systems that eliminate manual work and improve efficiency.</p>
         </div>
@@ -99,212 +118,231 @@
   </section>
 
   <!-- Tech Stack -->
-  <section class="py-20 bg-zinc-950">
+  <section class="py-20 bg-zinc-950" aria-labelledby="tech-heading">
     <div class="max-w-7xl mx-auto px-6">
-      <h2 class="text-4xl font-bold text-center mb-12">Tech We Use</h2>
+      <h2 id="tech-heading" class="text-4xl font-bold text-center mb-12">Tech We Use</h2>
       <div class="grid grid-cols-3 md:grid-cols-5 gap-8 text-center">
         <div class="flex flex-col items-center gap-3">
-          <i class="fab fa-react text-5xl text-cyan-400"></i>
+          <i class="fab fa-react text-5xl text-cyan-400" aria-hidden="true"></i>
           <span class="font-medium">React / Next.js</span>
         </div>
         <div class="flex flex-col items-center gap-3">
-          <span class="text-5xl font-bold text-blue-400">TS</span>
+          <span class="text-5xl font-bold text-blue-400" aria-hidden="true">TS</span>
           <span class="font-medium">TypeScript</span>
         </div>
         <div class="flex flex-col items-center gap-3">
-          <i class="fab fa-node-js text-5xl text-green-400"></i>
+          <i class="fab fa-node-js text-5xl text-green-400" aria-hidden="true"></i>
           <span class="font-medium">Node.js</span>
         </div>
         <div class="flex flex-col items-center gap-3">
-          <i class="fas fa-database text-5xl text-amber-400"></i>
+          <i class="fas fa-database text-5xl text-amber-400" aria-hidden="true"></i>
           <span class="font-medium">Databases</span>
         </div>
         <div class="flex flex-col items-center gap-3">
-          <i class="fas fa-wind text-5xl text-cyan-400"></i>
+          <i class="fas fa-wind text-5xl text-cyan-400" aria-hidden="true"></i>
           <span class="font-medium">Tailwind CSS</span>
         </div>
       </div>
     </div>
   </section>
 
-  
-
   <!-- Published Projects -->
-  <section id="published" class="py-24 bg-zinc-950">
-
+  <section id="published" class="py-24 bg-zinc-900">
     <div class="max-w-7xl mx-auto px-6">
       <h2 class="text-4xl font-bold text-center mb-4">Published Projects</h2>
       <p class="text-center text-zinc-400 mb-16 max-w-2xl mx-auto">Live projects already making an impact.</p>
-      <div class="max-w-2xl mx-auto">
-        <div class="bg-zinc-800 rounded-3xl p-8 card-hover">
-          <div class="text-emerald-400 mb-2 text-sm font-medium">ENVIRONMENTAL MOVEMENT</div>
-          <h3 class="text-3xl font-semibold mb-3">Kijani Pulse Foundation</h3>
-          <p class="text-zinc-400 mb-6">Student-led environmental movement at St. Joseph Boys Science High School, Kilimanjaro.</p>
-          <a href="https://kijanipulse-foundation.vercel.app" target="_blank"
-             class="inline-flex items-center gap-3 bg-emerald-600 hover:bg-emerald-700 px-8 py-4 rounded-2xl font-medium transition">
-            Visit Live Website <i class="fas fa-external-link-alt"></i>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+
+        <!-- Kijani Pulse -->
+        <article class="bg-zinc-800 rounded-3xl p-7 card-hover flex flex-col">
+          <div class="w-12 h-12 rounded-2xl bg-emerald-500/20 flex items-center justify-center mb-4">
+            <i class="fas fa-leaf text-2xl text-emerald-400" aria-hidden="true"></i>
+          </div>
+          <p class="text-emerald-400 text-xs font-semibold tracking-wider uppercase mb-2">Environmental</p>
+          <h3 class="text-xl font-semibold mb-2">Kijani Pulse Foundation</h3>
+          <p class="text-zinc-400 text-sm flex-grow mb-6">Student-led environmental movement at St. Joseph Boys Science High School, Kilimanjaro.</p>
+          <a href="https://kijanipulse-foundation.vercel.app" target="_blank" rel="noopener noreferrer"
+             class="inline-flex items-center gap-2 text-sm font-medium text-cyan-400 hover:text-cyan-300 transition">
+            Visit site <i class="fas fa-external-link-alt text-xs" aria-hidden="true"></i>
           </a>
-        </div>
+        </article>
+
+        <!-- Advance Archive -->
+        <article class="bg-zinc-800 rounded-3xl p-7 card-hover flex flex-col">
+          <div class="w-12 h-12 rounded-2xl bg-blue-500/20 flex items-center justify-center mb-4">
+            <i class="fas fa-file-alt text-2xl text-blue-400" aria-hidden="true"></i>
+          </div>
+          <p class="text-blue-400 text-xs font-semibold tracking-wider uppercase mb-2">Education</p>
+          <h3 class="text-xl font-semibold mb-2">Advance Archive</h3>
+          <p class="text-zinc-400 text-sm flex-grow mb-6">NECTA A-Level past papers and pre-mock exams. View online or download for revision.</p>
+          <a href="https://advance-archive.vercel.app" target="_blank" rel="noopener noreferrer"
+             class="inline-flex items-center gap-2 text-sm font-medium text-cyan-400 hover:text-cyan-300 transition">
+            Visit site <i class="fas fa-external-link-alt text-xs" aria-hidden="true"></i>
+          </a>
+        </article>
+
+        <!-- Accepted Students -->
+        <article class="bg-zinc-800 rounded-3xl p-7 card-hover flex flex-col">
+          <div class="w-12 h-12 rounded-2xl bg-indigo-500/20 flex items-center justify-center mb-4">
+            <i class="fas fa-user-graduate text-2xl text-indigo-400" aria-hidden="true"></i>
+          </div>
+          <p class="text-indigo-400 text-xs font-semibold tracking-wider uppercase mb-2">Education</p>
+          <h3 class="text-xl font-semibold mb-2">Accepted Students</h3>
+          <p class="text-zinc-400 text-sm flex-grow mb-6">Discover students accepted into the Yale Young African Scholars program.</p>
+          <a href="https://accepted-students.vercel.app" target="_blank" rel="noopener noreferrer"
+             class="inline-flex items-center gap-2 text-sm font-medium text-cyan-400 hover:text-cyan-300 transition">
+            Visit site <i class="fas fa-external-link-alt text-xs" aria-hidden="true"></i>
+          </a>
+        </article>
+
+        <!-- Screen List -->
+        <article class="bg-zinc-800 rounded-3xl p-7 card-hover flex flex-col">
+          <div class="w-12 h-12 rounded-2xl bg-violet-500/20 flex items-center justify-center mb-4">
+            <i class="fas fa-film text-2xl text-violet-400" aria-hidden="true"></i>
+          </div>
+          <p class="text-violet-400 text-xs font-semibold tracking-wider uppercase mb-2">Entertainment</p>
+          <h3 class="text-xl font-semibold mb-2">Screen List</h3>
+          <p class="text-zinc-400 text-sm flex-grow mb-6">Personal watchlist for movies, series, and animation with local admin tools.</p>
+          <a href="https://screen-list.vercel.app" target="_blank" rel="noopener noreferrer"
+             class="inline-flex items-center gap-2 text-sm font-medium text-cyan-400 hover:text-cyan-300 transition">
+            Visit site <i class="fas fa-external-link-alt text-xs" aria-hidden="true"></i>
+          </a>
+        </article>
+
+        <!-- Night Timetable -->
+        <article class="bg-zinc-800 rounded-3xl p-7 card-hover flex flex-col">
+          <div class="w-12 h-12 rounded-2xl bg-amber-500/20 flex items-center justify-center mb-4">
+            <i class="fas fa-clock text-2xl text-amber-400" aria-hidden="true"></i>
+          </div>
+          <p class="text-amber-400 text-xs font-semibold tracking-wider uppercase mb-2">Education</p>
+          <h3 class="text-xl font-semibold mb-2">Night Timetable</h3>
+          <p class="text-zinc-400 text-sm flex-grow mb-6">Night class timetable for Form V & VI at St. Joseph Boys Science High School.</p>
+          <a href="https://night-timetable.vercel.app" target="_blank" rel="noopener noreferrer"
+             class="inline-flex items-center gap-2 text-sm font-medium text-cyan-400 hover:text-cyan-300 transition">
+            Visit site <i class="fas fa-external-link-alt text-xs" aria-hidden="true"></i>
+          </a>
+        </article>
+
+        <!-- Link Hall -->
+        <article class="bg-zinc-800 rounded-3xl p-7 card-hover flex flex-col">
+          <div class="w-12 h-12 rounded-2xl bg-teal-500/20 flex items-center justify-center mb-4">
+            <i class="fas fa-link text-2xl text-teal-400" aria-hidden="true"></i>
+          </div>
+          <p class="text-teal-400 text-xs font-semibold tracking-wider uppercase mb-2">Directory</p>
+          <h3 class="text-xl font-semibold mb-2">Link Hall</h3>
+          <p class="text-zinc-400 text-sm flex-grow mb-6">Curated directory of useful websites — filterable by category and searchable.</p>
+          <a href="https://link-hall.vercel.app" target="_blank" rel="noopener noreferrer"
+             class="inline-flex items-center gap-2 text-sm font-medium text-cyan-400 hover:text-cyan-300 transition">
+            Visit site <i class="fas fa-external-link-alt text-xs" aria-hidden="true"></i>
+          </a>
+        </article>
+
+        <!-- Fit Finds -->
+        <article class="bg-zinc-800 rounded-3xl p-7 card-hover flex flex-col">
+          <div class="w-12 h-12 rounded-2xl bg-pink-500/20 flex items-center justify-center mb-4">
+            <i class="fas fa-shirt text-2xl text-pink-400" aria-hidden="true"></i>
+          </div>
+          <p class="text-pink-400 text-xs font-semibold tracking-wider uppercase mb-2">Fashion</p>
+          <h3 class="text-xl font-semibold mb-2">Fit Finds</h3>
+          <p class="text-zinc-400 text-sm flex-grow mb-6">Curated fashion Instagram accounts and shops in one place.</p>
+          <a href="https://fit-finds.vercel.app" target="_blank" rel="noopener noreferrer"
+             class="inline-flex items-center gap-2 text-sm font-medium text-cyan-400 hover:text-cyan-300 transition">
+            Visit site <i class="fas fa-external-link-alt text-xs" aria-hidden="true"></i>
+          </a>
+        </article>
+
+        <!-- Initial Read -->
+        <article class="bg-zinc-800 rounded-3xl p-7 card-hover flex flex-col">
+          <div class="w-12 h-12 rounded-2xl bg-orange-500/20 flex items-center justify-center mb-4">
+            <i class="fas fa-book-open text-2xl text-orange-400" aria-hidden="true"></i>
+          </div>
+          <p class="text-orange-400 text-xs font-semibold tracking-wider uppercase mb-2">Books</p>
+          <h3 class="text-xl font-semibold mb-2">Initial Read</h3>
+          <p class="text-zinc-400 text-sm flex-grow mb-6">A personal collection of books worth reading at least once — curated, not a backlog.</p>
+          <a href="https://initial-read.vercel.app" target="_blank" rel="noopener noreferrer"
+             class="inline-flex items-center gap-2 text-sm font-medium text-cyan-400 hover:text-cyan-300 transition">
+            Visit site <i class="fas fa-external-link-alt text-xs" aria-hidden="true"></i>
+          </a>
+        </article>
+
+        <!-- Music Seedbox -->
+        <article class="bg-zinc-800 rounded-3xl p-7 card-hover flex flex-col">
+          <div class="w-12 h-12 rounded-2xl bg-sky-500/20 flex items-center justify-center mb-4">
+            <i class="fas fa-magnet text-2xl text-sky-400" aria-hidden="true"></i>
+          </div>
+          <p class="text-sky-400 text-xs font-semibold tracking-wider uppercase mb-2">Tools</p>
+          <h3 class="text-xl font-semibold mb-2">Music Seedbox</h3>
+          <p class="text-zinc-400 text-sm flex-grow mb-6">Browser-based torrent creator — turn your own files into .torrent files locally.</p>
+          <a href="https://music-seedbox.vercel.app" target="_blank" rel="noopener noreferrer"
+             class="inline-flex items-center gap-2 text-sm font-medium text-cyan-400 hover:text-cyan-300 transition">
+            Visit site <i class="fas fa-external-link-alt text-xs" aria-hidden="true"></i>
+          </a>
+        </article>
+
+        <!-- Karibu Jikoni -->
+        <article class="bg-zinc-800 rounded-3xl p-7 card-hover flex flex-col">
+          <div class="w-12 h-12 rounded-2xl bg-red-500/20 flex items-center justify-center mb-4">
+            <i class="fas fa-utensils text-2xl text-red-400" aria-hidden="true"></i>
+          </div>
+          <p class="text-red-400 text-xs font-semibold tracking-wider uppercase mb-2">Food</p>
+          <h3 class="text-xl font-semibold mb-2">Karibu Jikoni</h3>
+          <p class="text-zinc-400 text-sm flex-grow mb-6">Kitabu cha Mapishi — a digital recipe book and Swahili kitchen companion.</p>
+          <a href="https://karibu-jikoni.vercel.app" target="_blank" rel="noopener noreferrer"
+             class="inline-flex items-center gap-2 text-sm font-medium text-cyan-400 hover:text-cyan-300 transition">
+            Visit site <i class="fas fa-external-link-alt text-xs" aria-hidden="true"></i>
+          </a>
+        </article>
+
+        <!-- Camino Islamico / Waqt -->
+        <article class="bg-zinc-800 rounded-3xl p-7 card-hover flex flex-col">
+          <div class="w-12 h-12 rounded-2xl bg-emerald-500/20 flex items-center justify-center mb-4">
+            <i class="fas fa-mosque text-2xl text-emerald-400" aria-hidden="true"></i>
+          </div>
+          <p class="text-emerald-400 text-xs font-semibold tracking-wider uppercase mb-2">Faith</p>
+          <h3 class="text-xl font-semibold mb-2">Camino Islamico</h3>
+          <p class="text-zinc-400 text-sm flex-grow mb-6">Prayer times, daily verse, and a plain-language introduction to Islam (Waqt).</p>
+          <a href="https://camino-islamico.vercel.app" target="_blank" rel="noopener noreferrer"
+             class="inline-flex items-center gap-2 text-sm font-medium text-cyan-400 hover:text-cyan-300 transition">
+            Visit site <i class="fas fa-external-link-alt text-xs" aria-hidden="true"></i>
+          </a>
+        </article>
+
+        <!-- PlayList Manifest -->
+        <article class="bg-zinc-800 rounded-3xl p-7 card-hover flex flex-col">
+          <div class="w-12 h-12 rounded-2xl bg-fuchsia-500/20 flex items-center justify-center mb-4">
+            <i class="fas fa-list-ul text-2xl text-fuchsia-400" aria-hidden="true"></i>
+          </div>
+          <p class="text-fuchsia-400 text-xs font-semibold tracking-wider uppercase mb-2">Music</p>
+          <h3 class="text-xl font-semibold mb-2">PlayList Manifest</h3>
+          <p class="text-zinc-400 text-sm flex-grow mb-6">Catalog any YouTube playlist into a clean, downloadable track list — metadata only.</p>
+          <a href="https://playlist-manifest.vercel.app" target="_blank" rel="noopener noreferrer"
+             class="inline-flex items-center gap-2 text-sm font-medium text-cyan-400 hover:text-cyan-300 transition">
+            Visit site <i class="fas fa-external-link-alt text-xs" aria-hidden="true"></i>
+          </a>
+        </article>
+
       </div>
     </div>
+  </section>
 
-      <p class="text-center text-zinc-400 mb-16 max-w-2xl mx-auto"></p>
-      <div class="max-w-2xl mx-auto">
-        <div class="bg-zinc-800 rounded-3xl p-8 card-hover">
-          <div class="text-emerald-400 mb-2 text-sm font-medium">ENVIRONMENTAL MOVEMENT</div>
-          <h3 class="text-3xl font-semibold mb-3">Advance Archive</h3>
-          <p class="text-zinc-400 mb-6">Student-led environmental movement at St. Joseph Boys Science High School, Kilimanjaro.</p>
-          <a href="https://advance-archive.vercel.app" target="_blank"
-             class="inline-flex items-center gap-3 bg-emerald-600 hover:bg-emerald-700 px-8 py-4 rounded-2xl font-medium transition">
-            Visit Live Website <i class="fas fa-external-link-alt"></i>
-          </a>
-        </div>
+  <!-- In Progress -->
+  <section id="projects" class="py-24 bg-zinc-950">
+    <div class="max-w-7xl mx-auto px-6">
+      <h2 class="text-4xl font-bold text-center mb-4">In Progress</h2>
+      <p class="text-center text-zinc-400 mb-12 max-w-2xl mx-auto">Tools and products currently being built or refined.</p>
+      <div class="max-w-3xl mx-auto bg-zinc-800/80 border border-zinc-700 rounded-3xl p-10 text-center">
+        <i class="fas fa-hammer text-4xl text-cyan-400 mb-6" aria-hidden="true"></i>
+        <h3 class="text-2xl font-semibold mb-3">More solutions on the way</h3>
+        <p class="text-zinc-400 mb-6">
+          We’re expanding the toolkit for schools, creators, and everyday workflows in Tanzania and beyond.
+          New releases will appear here and in the published list as they go live.
+        </p>
+        <a href="#contact" class="inline-flex items-center gap-2 bg-cyan-500 hover:bg-cyan-600 text-black font-semibold px-6 py-3 rounded-full transition">
+          Suggest a problem to solve
+        </a>
       </div>
     </div>
-
-  <p class="text-center text-zinc-400 mb-16 max-w-2xl mx-auto"></p>
-      <div class="max-w-2xl mx-auto">
-        <div class="bg-zinc-800 rounded-3xl p-8 card-hover">
-          <div class="text-emerald-400 mb-2 text-sm font-medium">ENVIRONMENTAL MOVEMENT</div>
-          <h3 class="text-3xl font-semibold mb-3">Accepted Students</h3>
-          <p class="text-zinc-400 mb-6">Student-led environmental movement at St. Joseph Boys Science High School, Kilimanjaro.</p>
-          <a href="https://accepted-students.vercel.app" target="_blank"
-             class="inline-flex items-center gap-3 bg-emerald-600 hover:bg-emerald-700 px-8 py-4 rounded-2xl font-medium transition">
-            Visit Live Website <i class="fas fa-external-link-alt"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-
-  <p class="text-center text-zinc-400 mb-16 max-w-2xl mx-auto"></p>
-      <div class="max-w-2xl mx-auto">
-        <div class="bg-zinc-800 rounded-3xl p-8 card-hover">
-          <div class="text-emerald-400 mb-2 text-sm font-medium">ENVIRONMENTAL MOVEMENT</div>
-          <h3 class="text-3xl font-semibold mb-3">Screen List</h3>
-          <p class="text-zinc-400 mb-6">Student-led environmental movement at St. Joseph Boys Science High School, Kilimanjaro.</p>
-          <a href="https://screen-list.vercel.app" target="_blank"
-             class="inline-flex items-center gap-3 bg-emerald-600 hover:bg-emerald-700 px-8 py-4 rounded-2xl font-medium transition">
-            Visit Live Website <i class="fas fa-external-link-alt"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-
-     <p class="text-center text-zinc-400 mb-16 max-w-2xl mx-auto"></p>
-      <div class="max-w-2xl mx-auto">
-        <div class="bg-zinc-800 rounded-3xl p-8 card-hover">
-          <div class="text-emerald-400 mb-2 text-sm font-medium">ENVIRONMENTAL MOVEMENT</div>
-          <h3 class="text-3xl font-semibold mb-3">Night Timetable</h3>
-          <p class="text-zinc-400 mb-6">Student-led environmental movement at St. Joseph Boys Science High School, Kilimanjaro.</p>
-          <a href="https://night-timetable.vercel.app" target="_blank"
-             class="inline-flex items-center gap-3 bg-emerald-600 hover:bg-emerald-700 px-8 py-4 rounded-2xl font-medium transition">
-            Visit Live Website <i class="fas fa-external-link-alt"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-
-     <p class="text-center text-zinc-400 mb-16 max-w-2xl mx-auto"></p>
-      <div class="max-w-2xl mx-auto">
-        <div class="bg-zinc-800 rounded-3xl p-8 card-hover">
-          <div class="text-emerald-400 mb-2 text-sm font-medium">ENVIRONMENTAL MOVEMENT</div>
-          <h3 class="text-3xl font-semibold mb-3">Link Hall</h3>
-          <p class="text-zinc-400 mb-6">Student-led environmental movement at St. Joseph Boys Science High School, Kilimanjaro.</p>
-          <a href="https://link-hall.vercel.app" target="_blank"
-             class="inline-flex items-center gap-3 bg-emerald-600 hover:bg-emerald-700 px-8 py-4 rounded-2xl font-medium transition">
-            Visit Live Website <i class="fas fa-external-link-alt"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-
-    
-     <p class="text-center text-zinc-400 mb-16 max-w-2xl mx-auto"></p>
-      <div class="max-w-2xl mx-auto">
-        <div class="bg-zinc-800 rounded-3xl p-8 card-hover">
-          <div class="text-emerald-400 mb-2 text-sm font-medium">ENVIRONMENTAL MOVEMENT</div>
-          <h3 class="text-3xl font-semibold mb-3">Fit Finds</h3>
-          <p class="text-zinc-400 mb-6">Student-led environmental movement at St. Joseph Boys Science High School, Kilimanjaro.</p>
-          <a href="https://fit-finds.vercel.app" target="_blank"
-             class="inline-flex items-center gap-3 bg-emerald-600 hover:bg-emerald-700 px-8 py-4 rounded-2xl font-medium transition">
-            Visit Live Website <i class="fas fa-external-link-alt"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-
-    
-     <p class="text-center text-zinc-400 mb-16 max-w-2xl mx-auto"></p>
-      <div class="max-w-2xl mx-auto">
-        <div class="bg-zinc-800 rounded-3xl p-8 card-hover">
-          <div class="text-emerald-400 mb-2 text-sm font-medium">ENVIRONMENTAL MOVEMENT</div>
-          <h3 class="text-3xl font-semibold mb-3">Initial Read</h3>
-          <p class="text-zinc-400 mb-6">Student-led environmental movement at St. Joseph Boys Science High School, Kilimanjaro.</p>
-          <a href="https://initial-read.vercel.app" target="_blank"
-             class="inline-flex items-center gap-3 bg-emerald-600 hover:bg-emerald-700 px-8 py-4 rounded-2xl font-medium transition">
-            Visit Live Website <i class="fas fa-external-link-alt"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-
- <p class="text-center text-zinc-400 mb-16 max-w-2xl mx-auto"></p>
-      <div class="max-w-2xl mx-auto">
-        <div class="bg-zinc-800 rounded-3xl p-8 card-hover">
-          <div class="text-emerald-400 mb-2 text-sm font-medium">ENVIRONMENTAL MOVEMENT</div>
-          <h3 class="text-3xl font-semibold mb-3">Music Seedbox</h3>
-          <p class="text-zinc-400 mb-6">Student-led environmental movement at St. Joseph Boys Science High School, Kilimanjaro.</p>
-          <a href="https://music-seedbox.vercel.app" target="_blank"
-             class="inline-flex items-center gap-3 bg-emerald-600 hover:bg-emerald-700 px-8 py-4 rounded-2xl font-medium transition">
-            Visit Live Website <i class="fas fa-external-link-alt"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-
- <p class="text-center text-zinc-400 mb-16 max-w-2xl mx-auto"></p>
-      <div class="max-w-2xl mx-auto">
-        <div class="bg-zinc-800 rounded-3xl p-8 card-hover">
-          <div class="text-emerald-400 mb-2 text-sm font-medium">ENVIRONMENTAL MOVEMENT</div>
-          <h3 class="text-3xl font-semibold mb-3">Karibu Jikoni</h3>
-          <p class="text-zinc-400 mb-6">Student-led environmental movement at St. Joseph Boys Science High School, Kilimanjaro.</p>
-          <a href="https://karibu-jikoni.vercel.app" target="_blank"
-             class="inline-flex items-center gap-3 bg-emerald-600 hover:bg-emerald-700 px-8 py-4 rounded-2xl font-medium transition">
-            Visit Live Website <i class="fas fa-external-link-alt"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-
- <p class="text-center text-zinc-400 mb-16 max-w-2xl mx-auto"></p>
-      <div class="max-w-2xl mx-auto">
-        <div class="bg-zinc-800 rounded-3xl p-8 card-hover">
-          <div class="text-emerald-400 mb-2 text-sm font-medium">ENVIRONMENTAL MOVEMENT</div>
-          <h3 class="text-3xl font-semibold mb-3">Camino Islamico</h3>
-          <p class="text-zinc-400 mb-6">Student-led environmental movement at St. Joseph Boys Science High School, Kilimanjaro.</p>
-          <a href="https://camino-islamico.vercel.app" target="_blank"
-             class="inline-flex items-center gap-3 bg-emerald-600 hover:bg-emerald-700 px-8 py-4 rounded-2xl font-medium transition">
-            Visit Live Website <i class="fas fa-external-link-alt"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-
- <p class="text-center text-zinc-400 mb-16 max-w-2xl mx-auto"></p>
-      <div class="max-w-2xl mx-auto">
-        <div class="bg-zinc-800 rounded-3xl p-8 card-hover">
-          <div class="text-emerald-400 mb-2 text-sm font-medium">ENVIRONMENTAL MOVEMENT</div>
-          <h3 class="text-3xl font-semibold mb-3">PlayList Manifest</h3>
-          <p class="text-zinc-400 mb-6">Student-led environmental movement at St. Joseph Boys Science High School, Kilimanjaro.</p>
-          <a href="https://playlist-manifest.vercel.app" target="_blank"
-             class="inline-flex items-center gap-3 bg-emerald-600 hover:bg-emerald-700 px-8 py-4 rounded-2xl font-medium transition">
-            Visit Live Website <i class="fas fa-external-link-alt"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-
-
   </section>
 
   <!-- About -->
@@ -312,8 +350,9 @@
     <div class="max-w-4xl mx-auto px-6 text-center">
       <h2 class="text-4xl font-bold mb-8">Think. Create. Innovate.</h2>
       <p class="text-xl text-zinc-300 leading-relaxed">
-        Hi, I’m <strong>Roque</strong>, founder of Visualixe. 
-        I build systems that turn real-world inefficiencies into practical digital solutions especially in education, productivity, and daily workflows in Tanzania and beyond.
+        Hi, I’m <strong>Roque</strong>, founder of Visualixe.
+        I build systems that turn real-world inefficiencies into practical digital solutions —
+        especially in education, productivity, and daily workflows in Tanzania and beyond.
       </p>
     </div>
   </section>
@@ -322,31 +361,35 @@
   <section id="contact" class="py-24 bg-gradient-to-br from-cyan-900 to-zinc-900">
     <div class="max-w-2xl mx-auto px-6">
       <div class="text-center mb-12">
-        <h2 class="text-5xl font-bold mb-4">Ready to solve a problem together?</h2>
-        <p class="text-xl text-zinc-300">Send me a message and I'll reply within 24 hours.</p>
+        <h2 class="text-4xl md:text-5xl font-bold mb-4">Ready to solve a problem together?</h2>
+        <p class="text-xl text-zinc-300">Send me a message and I’ll reply within 24 hours.</p>
       </div>
-      <form id="contactForm" class="space-y-6 bg-zinc-800/70 backdrop-blur p-10 rounded-3xl">
+      <form id="contactForm" class="space-y-6 bg-zinc-800/70 backdrop-blur p-8 md:p-10 rounded-3xl">
         <div>
-          <label class="block text-sm mb-2 font-medium">Your Name</label>
-          <input type="text" id="name" required class="w-full bg-zinc-900 border border-zinc-700 rounded-2xl px-6 py-4 focus:outline-none focus:border-cyan-400">
+          <label for="name" class="block text-sm mb-2 font-medium">Your Name</label>
+          <input type="text" id="name" name="name" required autocomplete="name"
+                 class="w-full bg-zinc-900 border border-zinc-700 rounded-2xl px-6 py-4 focus:outline-none focus:border-cyan-400">
         </div>
         <div>
-          <label class="block text-sm mb-2 font-medium">Email Address</label>
-          <input type="email" id="email" required class="w-full bg-zinc-900 border border-zinc-700 rounded-2xl px-6 py-4 focus:outline-none focus:border-cyan-400">
+          <label for="email" class="block text-sm mb-2 font-medium">Email Address</label>
+          <input type="email" id="email" name="email" required autocomplete="email"
+                 class="w-full bg-zinc-900 border border-zinc-700 rounded-2xl px-6 py-4 focus:outline-none focus:border-cyan-400">
         </div>
         <div>
-          <label class="block text-sm mb-2 font-medium">Project / Message</label>
-          <textarea id="message" rows="6" required class="w-full bg-zinc-900 border border-zinc-700 rounded-3xl px-6 py-4 focus:outline-none focus:border-cyan-400"></textarea>
+          <label for="message" class="block text-sm mb-2 font-medium">Project / Message</label>
+          <textarea id="message" name="message" rows="6" required
+                    class="w-full bg-zinc-900 border border-zinc-700 rounded-3xl px-6 py-4 focus:outline-none focus:border-cyan-400"></textarea>
         </div>
         <button type="submit" class="w-full bg-cyan-500 hover:bg-cyan-600 text-black font-semibold text-lg py-5 rounded-2xl transition">
           Send Message
         </button>
       </form>
-      <div id="successMessage" class="hidden text-center mt-8 p-6 bg-green-900/30 border border-green-500 rounded-2xl">
-        <p class="text-green-400 text-lg font-medium">✅ Thank you! I'll get back to you soon.</p>
+      <div id="successMessage" class="hidden text-center mt-8 p-6 bg-green-900/30 border border-green-500 rounded-2xl" role="status">
+        <p class="text-green-400 text-lg font-medium">Thank you! I’ll get back to you soon.</p>
       </div>
       <p class="text-center text-zinc-400 mt-8">
-        Or email me directly: <a href="mailto:visualixefoundation@gmail.com" class="text-cyan-400 hover:underline font-medium">visualixefoundation@gmail.com</a>
+        Or email me directly:
+        <a href="mailto:visualixefoundation@gmail.com" class="text-cyan-400 hover:underline font-medium">visualixefoundation@gmail.com</a>
       </p>
     </div>
   </section>
@@ -355,31 +398,43 @@
   <footer class="bg-black py-12 border-t border-zinc-800">
     <div class="max-w-7xl mx-auto px-6 text-center text-zinc-500">
       <p>&copy; 2026 Visualixe. All rights reserved.</p>
-      <p class="mt-2">Built with purpose ✌️</p>
+      <p class="mt-2">Built with purpose</p>
     </div>
   </footer>
 
   <script>
-    // Mobile Menu Toggle
     const mobileBtn = document.getElementById('mobileMenuBtn');
     const mobileMenu = document.getElementById('mobileMenu');
-    
+
     mobileBtn.addEventListener('click', () => {
+      const isOpen = !mobileMenu.classList.contains('hidden');
       mobileMenu.classList.toggle('hidden');
+      mobileBtn.setAttribute('aria-expanded', String(!isOpen));
+      mobileBtn.setAttribute('aria-label', isOpen ? 'Open menu' : 'Close menu');
       const icon = mobileBtn.querySelector('i');
       icon.classList.toggle('fa-bars');
       icon.classList.toggle('fa-times');
     });
 
-    // Contact Form
-    document.getElementById('contactForm').addEventListener('submit', function(e) {
+    // Close mobile menu when a link is clicked
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        mobileBtn.setAttribute('aria-expanded', 'false');
+        mobileBtn.setAttribute('aria-label', 'Open menu');
+        const icon = mobileBtn.querySelector('i');
+        icon.classList.add('fa-bars');
+        icon.classList.remove('fa-times');
+      });
+    });
+
+    document.getElementById('contactForm').addEventListener('submit', function (e) {
       e.preventDefault();
       document.getElementById('successMessage').classList.remove('hidden');
-      document.getElementById('contactForm').classList.add('hidden');
-     
+      this.classList.add('hidden');
       setTimeout(() => {
         this.reset();
-        document.getElementById('contactForm').classList.remove('hidden');
+        this.classList.remove('hidden');
         document.getElementById('successMessage').classList.add('hidden');
       }, 5000);
     });
