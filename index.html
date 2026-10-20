@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Visualixe | Think. Create. Innovate.</title>
+  <meta name="description" content="Visualixe Foundation builds practical apps and websites for education, productivity, and daily life in Tanzania and beyond.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="visualixe.png">
+  <link rel="apple-touch-icon" href="visualixe.png">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://visualixe-foundation.vercel.app/">
+  <meta property="og:title" content="Visualixe | Think. Create. Innovate.">
+  <meta property="og:description" content="We build practical digital solutions that simplify daily life, education, productivity, and collaboration.">
+  <meta property="og:image" content="https://visualixe-foundation.vercel.app/visualixe.png">
+  <meta property="og:image:alt" content="Visualixe Foundation logo">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Visualixe | Think. Create. Innovate.">
+  <meta name="twitter:description" content="We build practical digital solutions that simplify daily life, education, productivity, and collaboration.">
+  <meta name="twitter:image" content="https://visualixe-foundation.vercel.app/visualixe.png">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <style>
+    .hero-bg { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); }
+    .logo-glow { filter: drop-shadow(0 0 15px rgba(34, 211, 238, 0.6)); }
+    .card-hover { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+    @media (hover: hover) and (min-width: 768px) {
+      .card-hover:hover { transform: translateY(-6px) scale(1.02); }
+    }
+    .project-thumb-wrap {
+      position: relative;
+      aspect-ratio: 16 / 10;
+      background: #18181b;
+      overflow: hidden;
+    }
+    .project-skeleton {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, #27272a 0%, #3f3f46 50%, #27272a 100%);
+      background-size: 200% 100%;
+      animation: skeleton-shimmer 1.4s ease-in-out infinite;
+    }
+    @keyframes skeleton-shimmer {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+    .project-thumb {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+    .project-thumb.is-loaded {
+      opacity: 1;
+    }
+    .project-thumb.is-loaded + .project-skeleton,
+    .project-thumb-wrap.loaded .project-skeleton {
+      display: none;
+    }
+    /* Accessible focus rings */
+    a:focus-visible,
+    button:focus-visible {
+      outline: 2px solid #22d3ee;
+      outline-offset: 3px;
+    }
+    .open-contact-modal:focus-visible,
+    a.bg-cyan-500:focus-visible,
+    button.bg-cyan-500:focus-visible {
+      outline-offset: 4px;
+    }
+    /* Stronger category label contrast */
+    .project-cat {
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+  </style>
+</head>
+<body class="bg-zinc-950 text-white font-sans">
+
+  <!-- Navbar -->
+  <nav class="fixed top-0 w-full bg-zinc-950/95 backdrop-blur-md z-50 border-b border-zinc-800">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <div class="flex items-center gap-3">
+        <img src="visualixe.png" alt="Visualixe Logo" class="h-10 logo-glow">
+        <span class="text-2xl font-bold tracking-tight">Visualixe Foundation</span>
+      </div>
+
+      <!-- Desktop Menu -->
+      <div class="hidden md:flex gap-8 text-lg">
+        <a href="#services" class="hover:text-cyan-400 transition rounded-sm">Services</a>
+        <a href="#published" class="hover:text-cyan-400 transition rounded-sm">Published</a>
+        <a href="#about" class="hover:text-cyan-400 transition rounded-sm">About</a>
+        <a href="#contact" class="hover:text-cyan-400 transition rounded-sm">Contact</a>
+      </div>
+
+      <button type="button" class="open-contact-modal hidden md:block bg-cyan-500 hover:bg-cyan-600 px-6 py-2.5 rounded-full font-medium transition">Start a Project</button>
+
+      <!-- Mobile Menu Button -->
+      <button id="mobileMenuBtn" class="md:hidden text-3xl" aria-label="Toggle menu">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="hidden md:hidden bg-zinc-950 border-t border-zinc-800 py-6">
+      <div class="flex flex-col gap-6 px-6 text-lg">
+        <a href="#services" class="mobile-nav-link hover:text-cyan-400 rounded-sm">Services</a>
+        <a href="#published" class="mobile-nav-link hover:text-cyan-400 rounded-sm">Published</a>
+        <a href="#about" class="mobile-nav-link hover:text-cyan-400 rounded-sm">About</a>
+        <a href="#contact" class="mobile-nav-link hover:text-cyan-400 rounded-sm">Contact</a>
+        <button type="button" class="open-contact-modal mobile-nav-link bg-cyan-500 hover:bg-cyan-600 px-6 py-3 rounded-full font-medium text-center mt-4">Start a Project</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero-bg min-h-screen flex items-center pt-20">
+    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+      <div class="space-y-8">
+        <h1 class="text-5xl md:text-7xl font-bold leading-tight">
+          Apps & Websites<br>that solve <span class="text-cyan-400">real problems</span>
+        </h1>
+        <p class="text-xl text-zinc-400 max-w-lg">
+          We build practical digital solutions that simplify daily life, education, productivity, and collaboration.
+        </p>
+        <div class="flex flex-wrap gap-4">
+          <button type="button" class="open-contact-modal bg-cyan-500 hover:bg-cyan-400 text-black px-8 py-4 rounded-full font-semibold text-lg transition">Start a Project</button>
+          <a href="#published" class="border border-cyan-400 text-cyan-400 px-8 py-4 rounded-full font-semibold text-lg hover:bg-cyan-400 hover:text-black transition">View Published Work</a>
+        </div>
+      </div>
+      <div class="flex justify-center">
+        <img src="visualixe.png" alt="Visualixe" class="w-full max-w-md logo-glow">
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services" class="py-24 bg-zinc-900">
+    <div class="max-w-7xl mx-auto px-6">
+      <h2 class="text-4xl font-bold text-center mb-4">Our Services</h2>
+      <p class="text-center text-zinc-400 mb-16 max-w-2xl mx-auto">From idea to a working product — we help you every step of the way.</p>
+      
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-zinc-800 rounded-3xl p-8 card-hover text-center">
+          <i class="fas fa-mobile-alt text-5xl text-cyan-400 mb-6"></i>
+          <h3 class="text-2xl font-semibold mb-3">Mobile & Web Apps</h3>
+          <p class="text-zinc-400">Custom applications tailored to solve specific real-world problems.</p>
+        </div>
+        <div class="bg-zinc-800 rounded-3xl p-8 card-hover text-center">
+          <i class="fas fa-globe text-5xl text-cyan-400 mb-6"></i>
+          <h3 class="text-2xl font-semibold mb-3">Business Websites</h3>
+          <p class="text-zinc-400">Professional, fast-loading websites that represent your vision.</p>
+        </div>
+        <div class="bg-zinc-800 rounded-3xl p-8 card-hover text-center">
+          <i class="fas fa-cogs text-5xl text-cyan-400 mb-6"></i>
+          <h3 class="text-2xl font-semibold mb-3">Automation Tools</h3>
+          <p class="text-zinc-400">Systems that eliminate manual work and improve efficiency.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tech Stack -->
+  <section class="py-20 bg-zinc-950">
+    <div class="max-w-7xl mx-auto px-6">
+      <h2 class="text-4xl font-bold text-center mb-12">Tech We Use</h2>
+      <div class="grid grid-cols-3 md:grid-cols-5 gap-8 text-center">
+        <div class="flex flex-col items-center gap-3">
+          <i class="fab fa-react text-5xl text-cyan-400"></i>
+          <span class="font-medium">React / Next.js</span>
+        </div>
+        <div class="flex flex-col items-center gap-3">
+          <span class="text-5xl font-bold text-blue-400">TS</span>
+          <span class="font-medium">TypeScript</span>
+        </div>
+        <div class="flex flex-col items-center gap-3">
+          <i class="fab fa-node-js text-5xl text-green-400"></i>
+          <span class="font-medium">Node.js</span>
+        </div>
+        <div class="flex flex-col items-center gap-3">
+          <i class="fas fa-database text-5xl text-amber-400"></i>
+          <span class="font-medium">Databases</span>
+        </div>
+        <div class="flex flex-col items-center gap-3">
+          <i class="fas fa-wind text-5xl text-cyan-400"></i>
+          <span class="font-medium">Tailwind CSS</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Published Projects -->
+  <section id="published" class="py-16 sm:py-20 md:py-24 bg-zinc-950">
+    <div class="max-w-7xl mx-auto px-6">
+      <h2 class="text-4xl font-bold text-center mb-4">Published Projects</h2>
+      <p class="text-center text-zinc-400 mb-10 sm:mb-12 md:mb-16 max-w-2xl mx-auto px-2">Live projects already making an impact.</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6 md:gap-8 max-w-5xl mx-auto">
+        <div class="bg-zinc-800 rounded-3xl overflow-hidden card-hover flex flex-col">
+          <a href="https://kijanipulse-foundation.vercel.app/" target="_blank" rel="noopener noreferrer" class="block overflow-hidden border-b border-zinc-700/50 focus-visible:outline-none">
+            <div class="project-thumb-wrap">
+              <div class="project-skeleton" aria-hidden="true"></div>
+              <img src="https://image.thum.io/get/width/800/crop/500/noanimate/https://kijanipulse-foundation.vercel.app/" alt="KijaniPulse preview" class="project-thumb" loading="lazy" width="800" height="500">
+            </div>
+          </a>
+          <div class="p-5 sm:p-6 md:p-8 flex flex-col flex-1">
+            <div class="project-cat text-emerald-300 mb-2 text-xs sm:text-sm">ENVIRONMENTAL MOVEMENT</div>
+            <h3 class="text-xl sm:text-2xl font-semibold mb-2 sm:mb-3">KijaniPulse</h3>
+            <p class="text-zinc-400 mb-5 sm:mb-6 text-sm sm:text-base flex-1">Student-led environmental movement at St. Joseph Boys Science High School, Kilimanjaro.</p>
+            <a href="https://kijanipulse-foundation.vercel.app/" target="_blank" rel="noopener noreferrer"
+               class="inline-flex items-center justify-center gap-2 sm:gap-3 bg-emerald-600 hover:bg-emerald-700 px-5 py-2.5 sm:px-6 sm:py-3 rounded-2xl font-medium transition text-sm sm:text-base w-full sm:w-auto">
+              Visit Live Website <i class="fas fa-external-link-alt"></i>
+            </a>
+          </div>
+        </div>
+        <div class="bg-zinc-800 rounded-3xl overflow-hidden card-hover flex flex-col">
+          <a href="https://playlist-manifest.vercel.app/" target="_blank" rel="noopener noreferrer" class="block overflow-hidden border-b border-zinc-700/50 focus-visible:outline-none">
+            <div class="project-thumb-wrap">
+              <div class="project-skeleton" aria-hidden="true"></div>
+              <img src="https://image.thum.io/get/width/800/crop/500/noanimate/https://playlist-manifest.vercel.app/" alt="Playlist Manifest preview" class="project-thumb" loading="lazy" width="800" height="500">
+            </div>
+          </a>
+          <div class="p-5 sm:p-6 md:p-8 flex flex-col flex-1">
+            <div class="project-cat text-amber-300 mb-2 text-xs sm:text-sm">PRODUCTIVITY TOOL</div>
+            <h3 class="text-xl sm:text-2xl font-semibold mb-2 sm:mb-3">Playlist Manifest</h3>
+            <p class="text-zinc-400 mb-5 sm:mb-6 text-sm sm:text-base flex-1">Catalog any YouTube playlist into a clean, downloadable track list — metadata only, no files downloaded.</p>
+            <a href="https://playlist-manifest.vercel.app/" target="_blank" rel="noopener noreferrer"
+               class="inline-flex items-center justify-center gap-2 sm:gap-3 bg-amber-600 hover:bg-amber-700 px-5 py-2.5 sm:px-6 sm:py-3 rounded-2xl font-medium transition text-sm sm:text-base w-full sm:w-auto">
+              Visit Live Website <i class="fas fa-external-link-alt"></i>
+            </a>
+          </div>
+        </div>
+        <div class="bg-zinc-800 rounded-3xl overflow-hidden card-hover flex flex-col">
+          <a href="https://accepted-students.vercel.app/" target="_blank" rel="noopener noreferrer" class="block overflow-hidden border-b border-zinc-700/50 focus-visible:outline-none">
+            <div class="project-thumb-wrap">
+              <div class="project-skeleton" aria-hidden="true"></div>
+              <img src="https://image.thum.io/get/width/800/crop/500/noanimate/https://accepted-students.vercel.app/" alt="Accepted Students preview" class="project-thumb" loading="lazy" width="800" height="500">
+            </div>
+          </a>
+          <div class="p-5 sm:p-6 md:p-8 flex flex-col flex-1">
+            <div class="project-cat text-blue-300 mb-2 text-xs sm:text-sm">EDUCATION DIRECTORY</div>
+            <h3 class="text-xl sm:text-2xl font-semibold mb-2 sm:mb-3">Accepted Students</h3>
+            <p class="text-zinc-400 mb-5 sm:mb-6 text-sm sm:text-base flex-1">Discover students accepted into competitive summer programs and international high schools.</p>
+            <a href="https://accepted-students.vercel.app/" target="_blank" rel="noopener noreferrer"
+               class="inline-flex items-center justify-center gap-2 sm:gap-3 bg-blue-600 hover:bg-blue-700 px-5 py-2.5 sm:px-6 sm:py-3 rounded-2xl font-medium transition text-sm sm:text-base w-full sm:w-auto">
+              Visit Live Website <i class="fas fa-external-link-alt"></i>
+            </a>
+          </div>
+        </div>
+        <div class="bg-zinc-800 rounded-3xl overflow-hidden card-hover flex flex-col">
+          <a href="https://link-hall.vercel.app/" target="_blank" rel="noopener noreferrer" class="block overflow-hidden border-b border-zinc-700/50 focus-visible:outline-none">
+            <div class="project-thumb-wrap">
+              <div class="project-skeleton" aria-hidden="true"></div>
+              <img src="https://image.thum.io/get/width/800/crop/500/noanimate/https://link-hall.vercel.app/" alt="Link Hall preview" class="project-thumb" loading="lazy" width="800" height="500">
+            </div>
+          </a>
+          <div class="p-5 sm:p-6 md:p-8 flex flex-col flex-1">
+            <div class="project-cat text-rose-300 mb-2 text-xs sm:text-sm">DIRECTORY · CURATED LINKS</div>
+            <h3 class="text-xl sm:text-2xl font-semibold mb-2 sm:mb-3">Link Hall</h3>
+            <p class="text-zinc-400 mb-5 sm:mb-6 text-sm sm:text-base flex-1">A directory of good websites, sorted by category, with search and filtering — Roundup.</p>
+            <a href="https://link-hall.vercel.app/" target="_blank" rel="noopener noreferrer"
+               class="inline-flex items-center justify-center gap-2 sm:gap-3 bg-rose-600 hover:bg-rose-700 px-5 py-2.5 sm:px-6 sm:py-3 rounded-2xl font-medium transition text-sm sm:text-base w-full sm:w-auto">
+              Visit Live Website <i class="fas fa-external-link-alt"></i>
+            </a>
+          </div>
+        </div>
+        <div class="bg-zinc-800 rounded-3xl overflow-hidden card-hover flex flex-col">
+          <a href="https://advance-archive.vercel.app/" target="_blank" rel="noopener noreferrer" class="block overflow-hidden border-b border-zinc-700/50 focus-visible:outline-none">
+            <div class="project-thumb-wrap">
+              <div class="project-skeleton" aria-hidden="true"></div>
+              <img src="https://image.thum.io/get/width/800/crop/500/noanimate/https://advance-archive.vercel.app/" alt="NECTA A-Level Papers preview" class="project-thumb" loading="lazy" width="800" height="500">
+            </div>
+          </a>
+          <div class="p-5 sm:p-6 md:p-8 flex flex-col flex-1">
+            <div class="project-cat text-violet-300 mb-2 text-xs sm:text-sm">EDUCATION · EXAM ARCHIVE</div>
+            <h3 class="text-xl sm:text-2xl font-semibold mb-2 sm:mb-3">NECTA A-Level Papers</h3>
+            <p class="text-zinc-400 mb-5 sm:mb-6 text-sm sm:text-base flex-1">Past papers and pre-mock exams for Form V and VI — view online or download for revision.</p>
+            <a href="https://advance-archive.vercel.app/" target="_blank" rel="noopener noreferrer"
+               class="inline-flex items-center justify-center gap-2 sm:gap-3 bg-violet-600 hover:bg-violet-700 px-5 py-2.5 sm:px-6 sm:py-3 rounded-2xl font-medium transition text-sm sm:text-base w-full sm:w-auto">
+              Visit Live Website <i class="fas fa-external-link-alt"></i>
+            </a>
+          </div>
+        </div>
+        <div class="bg-zinc-800 rounded-3xl overflow-hidden card-hover flex flex-col">
+          <a href="https://music-seedbox.vercel.app/" target="_blank" rel="noopener noreferrer" class="block overflow-hidden border-b border-zinc-700/50 focus-visible:outline-none">
+            <div class="project-thumb-wrap">
+              <div class="project-skeleton" aria-hidden="true"></div>
+              <img src="https://image.thum.io/get/width/800/crop/500/noanimate/https://music-seedbox.vercel.app/" alt="Music Seedbox preview" class="project-thumb" loading="lazy" width="800" height="500">
+            </div>
+          </a>
+          <div class="p-5 sm:p-6 md:p-8 flex flex-col flex-1">
+            <div class="project-cat text-orange-300 mb-2 text-xs sm:text-sm">PRODUCTIVITY · TORRENT TOOL</div>
+            <h3 class="text-xl sm:text-2xl font-semibold mb-2 sm:mb-3">Music Seedbox</h3>
+            <p class="text-zinc-400 mb-5 sm:mb-6 text-sm sm:text-base flex-1">Create .torrent files from your own files entirely in the browser — magnet links, tags, and a local saved list.</p>
+            <a href="https://music-seedbox.vercel.app/" target="_blank" rel="noopener noreferrer"
+               class="inline-flex items-center justify-center gap-2 sm:gap-3 bg-orange-600 hover:bg-orange-700 px-5 py-2.5 sm:px-6 sm:py-3 rounded-2xl font-medium transition text-sm sm:text-base w-full sm:w-auto">
+              Visit Live Website <i class="fas fa-external-link-alt"></i>
+            </a>
+          </div>
+        </div>
+        <div class="bg-zinc-800 rounded-3xl overflow-hidden card-hover flex flex-col">
+          <a href="https://screen-list.vercel.app/" target="_blank" rel="noopener noreferrer" class="block overflow-hidden border-b border-zinc-700/50 focus-visible:outline-none">
+            <div class="project-thumb-wrap">
+              <div class="project-skeleton" aria-hidden="true"></div>
+              <img src="https://image.thum.io/get/width/800/crop/500/noanimate/https://screen-list.vercel.app/" alt="Screen List preview" class="project-thumb" loading="lazy" width="800" height="500">
+            </div>
+          </a>
+          <div class="p-5 sm:p-6 md:p-8 flex flex-col flex-1">
+            <div class="project-cat text-sky-300 mb-2 text-xs sm:text-sm">ENTERTAINMENT · WATCHLIST</div>
+            <h3 class="text-xl sm:text-2xl font-semibold mb-2 sm:mb-3">Screen List</h3>
+            <p class="text-zinc-400 mb-5 sm:mb-6 text-sm sm:text-base flex-1">A personal watchlist for movies and series — search, filter by type or year, and keep track of what is worth watching.</p>
+            <a href="https://screen-list.vercel.app/" target="_blank" rel="noopener noreferrer"
+               class="inline-flex items-center justify-center gap-2 sm:gap-3 bg-sky-600 hover:bg-sky-700 px-5 py-2.5 sm:px-6 sm:py-3 rounded-2xl font-medium transition text-sm sm:text-base w-full sm:w-auto">
+              Visit Live Website <i class="fas fa-external-link-alt"></i>
+            </a>
+          </div>
+        </div>
+        <div class="bg-zinc-800 rounded-3xl overflow-hidden card-hover flex flex-col">
+          <a href="https://fit-finds.vercel.app/" target="_blank" rel="noopener noreferrer" class="block overflow-hidden border-b border-zinc-700/50 focus-visible:outline-none">
+            <div class="project-thumb-wrap">
+              <div class="project-skeleton" aria-hidden="true"></div>
+              <img src="https://image.thum.io/get/width/800/crop/500/noanimate/https://fit-finds.vercel.app/" alt="Fit Finds preview" class="project-thumb" loading="lazy" width="800" height="500">
+            </div>
+          </a>
+          <div class="p-5 sm:p-6 md:p-8 flex flex-col flex-1">
+            <div class="project-cat text-pink-300 mb-2 text-xs sm:text-sm">FASHION · DISCOVERY</div>
+            <h3 class="text-xl sm:text-2xl font-semibold mb-2 sm:mb-3">Fit Finds</h3>
+            <p class="text-zinc-400 mb-5 sm:mb-6 text-sm sm:text-base flex-1">A curated list of fashion Instagram accounts and style inspiration worth following.</p>
+            <a href="https://fit-finds.vercel.app/" target="_blank" rel="noopener noreferrer"
+               class="inline-flex items-center justify-center gap-2 sm:gap-3 bg-pink-600 hover:bg-pink-700 px-5 py-2.5 sm:px-6 sm:py-3 rounded-2xl font-medium transition text-sm sm:text-base w-full sm:w-auto">
+              Visit Live Website <i class="fas fa-external-link-alt"></i>
+            </a>
+          </div>
+        </div>
+        <div class="bg-zinc-800 rounded-3xl overflow-hidden card-hover flex flex-col">
+          <a href="https://initial-read.vercel.app/" target="_blank" rel="noopener noreferrer" class="block overflow-hidden border-b border-zinc-700/50 focus-visible:outline-none">
+            <div class="project-thumb-wrap">
+              <div class="project-skeleton" aria-hidden="true"></div>
+              <img src="https://image.thum.io/get/width/800/crop/500/noanimate/https://initial-read.vercel.app/" alt="Initial Read preview" class="project-thumb" loading="lazy" width="800" height="500">
+            </div>
+          </a>
+          <div class="p-5 sm:p-6 md:p-8 flex flex-col flex-1">
+            <div class="project-cat text-lime-300 mb-2 text-xs sm:text-sm">READING · CURATED LIST</div>
+            <h3 class="text-xl sm:text-2xl font-semibold mb-2 sm:mb-3">Initial Read</h3>
+            <p class="text-zinc-400 mb-5 sm:mb-6 text-sm sm:text-base flex-1">A short list of books worth reading at least once — stories and ideas that stay with you, growing slowly on purpose.</p>
+            <a href="https://initial-read.vercel.app/" target="_blank" rel="noopener noreferrer"
+               class="inline-flex items-center justify-center gap-2 sm:gap-3 bg-lime-600 hover:bg-lime-700 px-5 py-2.5 sm:px-6 sm:py-3 rounded-2xl font-medium transition text-sm sm:text-base w-full sm:w-auto">
+              Visit Live Website <i class="fas fa-external-link-alt"></i>
+            </a>
+          </div>
+        </div>
+        <div class="bg-zinc-800 rounded-3xl overflow-hidden card-hover flex flex-col">
+          <a href="https://karibu-jikoni.vercel.app/" target="_blank" rel="noopener noreferrer" class="block overflow-hidden border-b border-zinc-700/50 focus-visible:outline-none">
+            <div class="project-thumb-wrap">
+              <div class="project-skeleton" aria-hidden="true"></div>
+              <img src="https://image.thum.io/get/width/800/crop/500/noanimate/https://karibu-jikoni.vercel.app/" alt="Karibu Jikoni preview" class="project-thumb" loading="lazy" width="800" height="500">
+            </div>
+          </a>
+          <div class="p-5 sm:p-6 md:p-8 flex flex-col flex-1">
+            <div class="project-cat text-yellow-300 mb-2 text-xs sm:text-sm">FOOD · RECIPE BOOK</div>
+            <h3 class="text-xl sm:text-2xl font-semibold mb-2 sm:mb-3">Karibu Jikoni</h3>
+            <p class="text-zinc-400 mb-5 sm:mb-6 text-sm sm:text-base flex-1">Kitabu cha mapishi — a digital recipe book for home cooking, organized and easy to browse.</p>
+            <a href="https://karibu-jikoni.vercel.app/" target="_blank" rel="noopener noreferrer"
+               class="inline-flex items-center justify-center gap-2 sm:gap-3 bg-yellow-600 hover:bg-yellow-700 px-5 py-2.5 sm:px-6 sm:py-3 rounded-2xl font-medium transition text-sm sm:text-base w-full sm:w-auto">
+              Visit Live Website <i class="fas fa-external-link-alt"></i>
+            </a>
+          </div>
+        </div>
+        <div class="bg-zinc-800 rounded-3xl overflow-hidden card-hover flex flex-col">
+          <a href="https://night-timetable.vercel.app/" target="_blank" rel="noopener noreferrer" class="block overflow-hidden border-b border-zinc-700/50 focus-visible:outline-none">
+            <div class="project-thumb-wrap">
+              <div class="project-skeleton" aria-hidden="true"></div>
+              <img src="https://image.thum.io/get/width/800/crop/500/noanimate/https://night-timetable.vercel.app/" alt="Night Timetable preview" class="project-thumb" loading="lazy" width="800" height="500">
+            </div>
+          </a>
+          <div class="p-5 sm:p-6 md:p-8 flex flex-col flex-1">
+            <div class="project-cat text-cyan-300 mb-2 text-xs sm:text-sm">EDUCATION · SCHEDULE</div>
+            <h3 class="text-xl sm:text-2xl font-semibold mb-2 sm:mb-3">Night Timetable</h3>
+            <p class="text-zinc-400 mb-5 sm:mb-6 text-sm sm:text-base flex-1">Public weekly schedule showing which teacher is teaching Form V / Form VI each night at St. Joseph Boys Science High School.</p>
+            <a href="https://night-timetable.vercel.app/" target="_blank" rel="noopener noreferrer"
+               class="inline-flex items-center justify-center gap-2 sm:gap-3 bg-cyan-600 hover:bg-cyan-700 px-5 py-2.5 sm:px-6 sm:py-3 rounded-2xl font-medium transition text-sm sm:text-base w-full sm:w-auto">
+              Visit Live Website <i class="fas fa-external-link-alt"></i>
+            </a>
+          </div>
+        </div>
+        <div class="bg-zinc-800 rounded-3xl overflow-hidden card-hover flex flex-col">
+          <a href="https://camino-islamico.vercel.app/" target="_blank" rel="noopener noreferrer" class="block overflow-hidden border-b border-zinc-700/50 focus-visible:outline-none">
+            <div class="project-thumb-wrap">
+              <div class="project-skeleton" aria-hidden="true"></div>
+              <img src="https://image.thum.io/get/width/800/crop/500/noanimate/https://camino-islamico.vercel.app/" alt="Waqt preview" class="project-thumb" loading="lazy" width="800" height="500">
+            </div>
+          </a>
+          <div class="p-5 sm:p-6 md:p-8 flex flex-col flex-1">
+            <div class="project-cat text-teal-300 mb-2 text-xs sm:text-sm">FAITH · PRAYER TIMES</div>
+            <h3 class="text-xl sm:text-2xl font-semibold mb-2 sm:mb-3">Waqt</h3>
+            <p class="text-zinc-400 mb-5 sm:mb-6 text-sm sm:text-base flex-1">Local prayer times, a verse for today, and a plain-language introduction for people new to Islam.</p>
+            <a href="https://camino-islamico.vercel.app/" target="_blank" rel="noopener noreferrer"
+               class="inline-flex items-center justify-center gap-2 sm:gap-3 bg-teal-600 hover:bg-teal-700 px-5 py-2.5 sm:px-6 sm:py-3 rounded-2xl font-medium transition text-sm sm:text-base w-full sm:w-auto">
+              Visit Live Website <i class="fas fa-external-link-alt"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="py-24 bg-zinc-900">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <h2 class="text-4xl font-bold mb-8">Think. Create. Innovate.</h2>
+      <p class="text-xl text-zinc-300 leading-relaxed">
+        Hi, I’m <strong>Roque</strong>, founder of Visualixe. 
+        I build systems that turn real-world inefficiencies into practical digital solutions especially in education, productivity, and daily workflows in Tanzania and beyond.
+      </p>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="py-24 bg-gradient-to-br from-cyan-900 to-zinc-900">
+    <div class="max-w-xl mx-auto px-6">
+      <div class="text-center mb-10">
+        <h2 class="text-4xl md:text-5xl font-bold mb-4">Let’s build something</h2>
+        <p class="text-lg text-zinc-300 max-w-md mx-auto">
+          Have a problem worth solving? I work with students, schools, and small teams in Tanzania and beyond.
+        </p>
+      </div>
+
+      <!-- Form -->
+      <form id="contactForm" class="bg-zinc-900/60 backdrop-blur-sm border border-zinc-700/50 rounded-3xl p-6 md:p-8 space-y-5 shadow-xl">
+        <div>
+          <label for="name" class="block text-sm font-medium text-zinc-300 mb-2">Name</label>
+          <input type="text" id="name" name="name" required
+            class="w-full bg-zinc-800 border border-zinc-600 rounded-xl px-4 py-3 text-white placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent transition"
+            placeholder="Your name">
+        </div>
+        <div>
+          <label for="email" class="block text-sm font-medium text-zinc-300 mb-2">Email</label>
+          <input type="email" id="email" name="email" required
+            class="w-full bg-zinc-800 border border-zinc-600 rounded-xl px-4 py-3 text-white placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent transition"
+            placeholder="you@example.com">
+        </div>
+        <div>
+          <label for="message" class="block text-sm font-medium text-zinc-300 mb-2">Message</label>
+          <textarea id="message" name="message" rows="4" required
+            class="w-full bg-zinc-800 border border-zinc-600 rounded-xl px-4 py-3 text-white placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent transition resize-none"
+            placeholder="Tell me about your project or idea..."></textarea>
+        </div>
+        <button type="submit"
+          class="w-full bg-cyan-500 hover:bg-cyan-400 text-black font-semibold px-8 py-4 rounded-full transition shadow-lg text-lg">
+          Start a Project
+        </button>
+        <p id="formStatus" class="text-center text-sm text-zinc-400 hidden"></p>
+      </form>
+
+      <!-- Icon-only contact buttons -->
+      <div class="mt-10 flex items-center justify-center gap-4">
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=visualixefoundation@gmail.com" target="_blank" rel="noopener noreferrer"
+           aria-label="Email"
+           class="w-12 h-12 rounded-full bg-cyan-500/15 border border-cyan-500/40 flex items-center justify-center text-cyan-400 hover:bg-cyan-500 hover:text-black hover:border-cyan-500 transition">
+          <i class="fas fa-envelope text-lg"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/roque-desouza" target="_blank" rel="noopener noreferrer"
+           aria-label="LinkedIn"
+           class="w-12 h-12 rounded-full bg-blue-500/15 border border-blue-500/40 flex items-center justify-center text-blue-400 hover:bg-blue-500 hover:text-white hover:border-blue-500 transition">
+          <i class="fab fa-linkedin-in text-lg"></i>
+        </a>
+        <a href="https://www.instagram.com/visualixe_foundation" target="_blank" rel="noopener noreferrer"
+           aria-label="Instagram"
+           class="w-12 h-12 rounded-full bg-pink-500/15 border border-pink-500/40 flex items-center justify-center text-pink-400 hover:bg-pink-500 hover:text-white hover:border-pink-500 transition">
+          <i class="fab fa-instagram text-lg"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Modal -->
+  <div id="contactModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
+    <div class="bg-white rounded-2xl shadow-2xl max-w-sm w-full overflow-hidden">
+      <div class="p-6 text-center border-b border-gray-100">
+        <h3 class="text-xl font-bold text-gray-900">Roque Desouza</h3>
+        <p class="text-sm text-gray-500 mt-1">Founder · Visualixe</p>
+      </div>
+      <div class="p-6 space-y-5">
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=visualixefoundation@gmail.com" target="_blank" rel="noopener noreferrer" class="flex items-start gap-4 group">
+          <div class="w-10 h-10 rounded-full bg-emerald-50 flex items-center justify-center flex-shrink-0">
+            <i class="fas fa-envelope text-emerald-600"></i>
+          </div>
+          <div class="text-left">
+            <p class="text-xs font-medium text-gray-500 uppercase tracking-wide">Email</p>
+            <p class="text-emerald-600 group-hover:underline font-medium">visualixefoundation@gmail.com</p>
+          </div>
+        </a>
+        <a href="https://www.linkedin.com/in/roque-desouza" target="_blank" rel="noopener noreferrer" class="flex items-start gap-4 group">
+          <div class="w-10 h-10 rounded-full bg-emerald-50 flex items-center justify-center flex-shrink-0">
+            <i class="fab fa-linkedin-in text-emerald-600"></i>
+          </div>
+          <div class="text-left">
+            <p class="text-xs font-medium text-gray-500 uppercase tracking-wide">LinkedIn</p>
+            <p class="text-emerald-600 group-hover:underline font-medium">linkedin.com/in/roque-desouza</p>
+          </div>
+        </a>
+        <a href="https://www.instagram.com/visualixe_foundation" target="_blank" rel="noopener noreferrer" class="flex items-start gap-4 group">
+          <div class="w-10 h-10 rounded-full bg-emerald-50 flex items-center justify-center flex-shrink-0">
+            <i class="fab fa-instagram text-emerald-600"></i>
+          </div>
+          <div class="text-left">
+            <p class="text-xs font-medium text-gray-500 uppercase tracking-wide">Instagram</p>
+            <p class="text-emerald-600 group-hover:underline font-medium">@visualixe_foundation</p>
+          </div>
+        </a>
+      </div>
+      <div class="border-t border-gray-100 p-4">
+        <button type="button" id="closeContactModal" class="w-full text-emerald-600 font-medium py-2 hover:bg-emerald-50 rounded-xl transition">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-black py-12 border-t border-zinc-800">
+    <div class="max-w-7xl mx-auto px-6 text-center text-zinc-500">
+      <p>&copy; 2026 Visualixe. All rights reserved.</p>
+      <p class="mt-2">Built with purpose ✌️</p>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile Menu Toggle
+    const mobileBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    function closeMobileMenu() {
+      mobileMenu.classList.add('hidden');
+      const icon = mobileBtn.querySelector('i');
+      icon.classList.add('fa-bars');
+      icon.classList.remove('fa-times');
+    }
+
+    mobileBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+      const icon = mobileBtn.querySelector('i');
+      icon.classList.toggle('fa-bars');
+      icon.classList.toggle('fa-times');
+    });
+
+    document.querySelectorAll('.mobile-nav-link').forEach((link) => {
+      link.addEventListener('click', () => {
+        closeMobileMenu();
+      });
+    });
+
+    // Contact Modal
+    const contactModal = document.getElementById('contactModal');
+    const closeContactBtn = document.getElementById('closeContactModal');
+
+    function openContactModal() {
+      contactModal.classList.remove('hidden');
+      contactModal.classList.add('flex');
+      closeMobileMenu();
+    }
+
+    function closeContactModalFn() {
+      contactModal.classList.add('hidden');
+      contactModal.classList.remove('flex');
+    }
+
+    document.querySelectorAll('.open-contact-modal').forEach((btn) => {
+      btn.addEventListener('click', openContactModal);
+    });
+
+    closeContactBtn.addEventListener('click', closeContactModalFn);
+
+    contactModal.addEventListener('click', (e) => {
+      if (e.target === contactModal) {
+        closeContactModalFn();
+      }
+    });
+
+    // Contact form → opens Gmail compose with prefilled details
+    const contactForm = document.getElementById('contactForm');
+    const formStatus = document.getElementById('formStatus');
+
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+
+      const subject = encodeURIComponent('Project inquiry from ' + name);
+      const body = encodeURIComponent(
+        'Name: ' + name + '\n' +
+        'Email: ' + email + '\n\n' +
+        message
+      );
+
+      const gmailUrl = 'https://mail.google.com/mail/?view=cm&fs=1&to=visualixefoundation@gmail.com&su=' + subject + '&body=' + body;
+      window.open(gmailUrl, '_blank', 'noopener,noreferrer');
+
+      formStatus.textContent = 'Opening Gmail… you can send the message from there.';
+      formStatus.classList.remove('hidden');
+      formStatus.classList.add('text-cyan-400');
+      contactForm.reset();
+    });
+
+    // Project thumbnail loading states
+    document.querySelectorAll('.project-thumb').forEach((img) => {
+      const wrap = img.closest('.project-thumb-wrap');
+      const markLoaded = () => {
+        img.classList.add('is-loaded');
+        if (wrap) wrap.classList.add('loaded');
+      };
+      if (img.complete && img.naturalWidth > 0) {
+        markLoaded();
+      } else {
+        img.addEventListener('load', markLoaded);
+        img.addEventListener('error', () => {
+          if (wrap) {
+            wrap.classList.add('loaded');
+            const sk = wrap.querySelector('.project-skeleton');
+            if (sk) sk.style.display = 'none';
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>
